@@ -1,0 +1,30 @@
+
+name: 
+
+on:
+  push:
+    branches: [development]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🛎️ Checkout 
+        uses: actions/checkout@master
+        with:
+          persist-credentials: false
+
+      - name: 🧶 Yarn 
+        run: yarn
+
+      - name: 🏗️ Build 
+        run: |
+          yarn build
+
+      - name: 📦 Publish artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: MarmadileManteaterQwik
+          path: dist/
+
