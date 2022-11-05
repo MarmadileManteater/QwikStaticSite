@@ -4,6 +4,7 @@ export interface IProjectButtonData {
   prefix: string;
   locationName: string;
   link: string;
+  target: string;
 }
   
 export interface IProject {

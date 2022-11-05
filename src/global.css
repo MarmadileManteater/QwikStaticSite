@@ -13,6 +13,10 @@
   --qwik-dark-purple: #713fc2;
 }
 
+body {
+  background-image: url(images/map.png);
+  background-attachment: fixed;
+}
 
 @tailwind base;
 @tailwind components;

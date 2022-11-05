@@ -1,6 +1,6 @@
 import { component$ } from '@builder.io/qwik';
 import { useDocumentHead, useLocation } from '@builder.io/qwik-city';
-
+import favicon from '../../images/favicon.ico'
 /**
  * The RouterHead component is placed inside of the document `<head>` element.
  */
@@ -14,8 +14,7 @@ export const RouterHead = component$(() => {
 
       <link rel="canonical" href={loc.href} />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
+      <link rel="icon" type="image/png" href={favicon} sizes="250x250" />
       {head.meta.map((m) => (
         <meta {...m} />
       ))}

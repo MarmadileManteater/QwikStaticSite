@@ -1,142 +1,64 @@
 import { component$ } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
-import { Link } from '@builder.io/qwik-city';
-
+import tags from '../data/tags.json';
+import projectsData from '../data/projects.json';
+import ProjectPreview from '../components/preview-projects/preview-projects';
+import portrait from '../images/portrait.png';
+import favicon from '../images/favicon.ico';
 export default component$(() => {
 
-
+  const getProjects = () => {
+    const topFeatured = projectsData[0]
+    const sortedData = projectsData.map(p => p).sort((a, b) => { return new Date(b.lastUpdate).getTime() - new Date(a.lastUpdate).getTime() })
+    let lastUpdated = null
+    let i = 0
+    while (lastUpdated === null && i < sortedData.length) {
+      if (sortedData[i].title !== topFeatured.title) {
+        lastUpdated = sortedData[i]
+      }
+      i++
+    }
+    if (lastUpdated === null)
+      return [topFeatured]
+    return [topFeatured, lastUpdated]
+  }
 
   return (
-    <div>
-      <h1>
-        Welcome to Qwik <span class="lightning">⚡️</span>
-      </h1>
+    <>
 
-      <ul>
-        <li>
-          Check out the <code>src/routes</code> directory to get started.
-        </li>
-        <li>
-          Add integrations with <code>npm run qwik add</code>.
-        </li>
-        <li>
-          More info about development in <code>README.md</code>
-        </li>
-      </ul>
-
-      <h2>Commands</h2>
-
-      <table class="commands">
-        <tr>
-          <td>
-            <code>npm run dev</code>
-          </td>
-          <td>Start the dev server and watch for changes.</td>
-        </tr>
-        <tr>
-          <td>
-            <code>npm run preview</code>
-          </td>
-          <td>Production build and start preview server.</td>
-        </tr>
-        <tr>
-          <td>
-            <code>npm run build</code>
-          </td>
-          <td>Production build.</td>
-        </tr>
-        <tr>
-          <td>
-            <code>npm run qwik add</code>
-          </td>
-          <td>Select an integration to add.</td>
-        </tr>
-      </table>
-
-      <h2>Add Integrations</h2>
-
-      <table class="commands">
-        <tr>
-          <td>
-            <code>npm run qwik add cloudflare-pages</code>
-          </td>
-          <td>
-            <a href="https://developers.cloudflare.com/pages" target="_blank">
-              Cloudflare Pages Server
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <code>npm run qwik add express</code>
-          </td>
-          <td>
-            <a href="https://expressjs.com/" target="_blank">
-              Nodejs Express Server
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <code>npm run qwik add netlify-edge</code>
-          </td>
-          <td>
-            <a href="https://docs.netlify.com/" target="_blank">
-              Netlify Edge Functions
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <code>npm run qwik add static-node</code>
-          </td>
-          <td>
-            <a
-              href="https://qwik.builder.io/qwikcity/static-site-generation/overview/"
-              target="_blank"
-            >
-              Static Site Generation (SSG)
-            </a>
-          </td>
-        </tr>
-      </table>
-
-      <h2>Community</h2>
-
-      <ul>
-        <li>
-          <span>Questions or just want to say hi? </span>
-          <a href="https://qwik.builder.io/chat" target="_blank">
-            Chat on discord!
-          </a>
-        </li>
-        <li>
-          <span>Follow </span>
-          <a href="https://twitter.com/QwikDev" target="_blank">
-            @QwikDev
-          </a>
-          <span> on Twitter</span>
-        </li>
-        <li>
-          <span>Open issues and contribute on </span>
-          <a href="https://github.com/BuilderIO/qwik" target="_blank">
-            GitHub
-          </a>
-        </li>
-        <li>
-          <span>Watch </span>
-          <a href="https://qwik.builder.io/media/" target="_blank">
-            Presentations, Podcasts, Videos, etc.
-          </a>
-        </li>
-      </ul>
-      <Link class="mindblow" href="/flower">
-        Blow my mind 🤯
-      </Link>
-    </div>
+      <div class="flex" style="justify-content: center;">
+        <div class="bg-white dark:bg-zinc-900 rounded-xl mb-3 p-5 w-1/2 mr-3">
+          <div class="flex">
+            <img src={portrait} class="mr-4" style="max-height:80px" />
+            <div>
+              <p>Hello! I'm MarmadileManteater. My real name is Emma, and you can look it up. That's an actual picture of me! <a href="mailto:marmadilemanteater@proton.me" class="inline-block hover:underline text-blue-600 dark:text-red-300">📭Email me</a></p>
+              
+            </div>
+          </div>
+          
+          
+        </div>
+        <div class="bg-white dark:bg-zinc-900 rounded-xl mb-3 p-5 w-1/4">
+          <ul>
+            <li><a href="https://github.com/MarmadileManteater/" target="_blank" class="pr-4 mr-4 block hover:underline text-blue-600 dark:text-red-300">👩‍💻 GitHub</a></li>
+            <li><a href="https://marmadilemanteater.itch.io/" target="_blank" class="pr-4 mr-4 block hover:underline text-blue-600 dark:text-red-300">🕹 itch.io</a></li>
+            <li><a href="https://opengameart.org/users/marmadilemanteater" target="_blank" class="pr-4 mr-4 block hover:underline text-blue-600 dark:text-red-300">🎨 OpenGameArt</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="bg-white dark:bg-zinc-900 rounded-t-xl">
+        <ProjectPreview projects={getProjects()} tags={tags} ></ProjectPreview>
+      </div>
+    </>
   );
 });
 
 export const head: DocumentHead = {
-  title: 'Welcome to Qwik',
+  title: 'MarmadileManteater',
+  links: [{
+    rel: 'icon',
+    href: favicon,
+    type: 'image/png',
+    sizes: '250x250'
+  }]
 };
