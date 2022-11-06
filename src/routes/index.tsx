@@ -26,8 +26,8 @@ export default component$(() => {
   return (
     <>
 
-      <div class="flex" style="justify-content: center;">
-        <div class="bg-white dark:bg-zinc-900 rounded-xl mb-3 p-5 w-1/2 mr-3">
+      <div class="md:flex" style="justify-content: center;">
+        <div class="bg-white dark:bg-zinc-900 rounded-xl md:mb-3 mb-1 p-5 mr-3 md:w-1/2 w-full">
           <div class="flex">
             <img src={portrait} class="mr-4" style="max-height:80px" />
             <div>
@@ -35,14 +35,12 @@ export default component$(() => {
               
             </div>
           </div>
-          
-          
         </div>
-        <div class="bg-white dark:bg-zinc-900 rounded-xl mb-3 p-5 w-1/4">
+        <div class="bg-white dark:bg-zinc-900 rounded-xl md:mb-3 mb-1 p-5 md:w-1/4 w-full">
           <ul>
-            <li><a href="https://github.com/MarmadileManteater/" target="_blank" class="pr-4 mr-4 block hover:underline text-blue-600 dark:text-red-300">👩‍💻 GitHub</a></li>
-            <li><a href="https://marmadilemanteater.itch.io/" target="_blank" class="pr-4 mr-4 block hover:underline text-blue-600 dark:text-red-300">🕹 itch.io</a></li>
-            <li><a href="https://opengameart.org/users/marmadilemanteater" target="_blank" class="pr-4 mr-4 block hover:underline text-blue-600 dark:text-red-300">🎨 OpenGameArt</a></li>
+            <li><a href="https://github.com/MarmadileManteater/" target="_blank" class="md:text-base text-xl pr-4 mr-4 block hover:underline hover:bg-zinc-200 hover:dark:bg-zinc-700 text-blue-600 dark:text-red-300">👩‍💻 GitHub</a></li>
+            <li><a href="https://marmadilemanteater.itch.io/" target="_blank" class="md:text-base text-xl pr-4 mr-4 block hover:underline hover:bg-zinc-200 hover:dark:bg-zinc-700 text-blue-600 dark:text-red-300">🕹 itch.io</a></li>
+            <li><a href="https://opengameart.org/users/marmadilemanteater" target="_blank" class="md:text-base text-xl pr-4 mr-4 block hover:underline hover:bg-zinc-200  hover:dark:bg-zinc-700 text-blue-600 dark:text-red-300">🎨 OpenGameArt</a></li>
           </ul>
         </div>
       </div>
