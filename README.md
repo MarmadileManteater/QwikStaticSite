@@ -1,4 +1,4 @@
-# Qwik static site for GH pages⚡️
+# Qwik⚡️ static site for GH pages
 
 This is a simple qwik website I put together in order to 🧠learn a little bit more about it. 
 
