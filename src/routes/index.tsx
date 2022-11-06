@@ -27,16 +27,16 @@ export default component$(() => {
     <>
 
       <div class="md:flex" style="justify-content: center;">
-        <div class="bg-white dark:bg-zinc-900 rounded-xl md:mb-3 mb-1 p-5 mr-3 md:w-1/2 w-full">
-          <div class="flex">
-            <img src={portrait} class="mr-4" style="max-height:80px" />
+        <div class="bg-white dark:bg-zinc-900 rounded-t-xl md:rounded-xl md:mb-3 p-5 mr-3 md:w-1/2 w-full">
+          <div class="sm:flex">
+            <img src={portrait} class=" w-1/4 mr-auto ml-auto mt-1 mb-4 sm:mr-4 sm:h-16 sm:w-auto sm:mt-0"  />
             <div>
-              <p>Hello! I'm MarmadileManteater. My real name is Emma, and you can look it up. That's an actual picture of me! <a href="mailto:marmadilemanteater@proton.me" class="inline-block hover:underline text-blue-600 dark:text-red-300">📭Email me</a></p>
+              <p class="text-xl md:text-base">Hello! I'm MarmadileManteater. My real name is Emma, and you can look it up. That's an actual picture of me! <a href="mailto:marmadilemanteater@proton.me" class="inline-block hover:underline text-blue-600 dark:text-red-300">📭Email me</a></p>
               
             </div>
           </div>
         </div>
-        <div class="bg-white dark:bg-zinc-900 rounded-xl md:mb-3 mb-1 p-5 md:w-1/4 w-full">
+        <div class="bg-zinc-100 md:rounded-xl dark:bg-zinc-800 md:bg-white md:dark:bg-zinc-900 md:mb-3 p-5 md:w-1/4 w-full">
           <ul>
             <li><a href="https://github.com/MarmadileManteater/" target="_blank" class="md:text-base text-xl pr-4 mr-4 block hover:underline hover:bg-zinc-200 hover:dark:bg-zinc-700 text-blue-600 dark:text-red-300">👩‍💻 GitHub</a></li>
             <li><a href="https://marmadilemanteater.itch.io/" target="_blank" class="md:text-base text-xl pr-4 mr-4 block hover:underline hover:bg-zinc-200 hover:dark:bg-zinc-700 text-blue-600 dark:text-red-300">🕹 itch.io</a></li>
@@ -44,7 +44,7 @@ export default component$(() => {
           </ul>
         </div>
       </div>
-      <div class="bg-white dark:bg-zinc-900 rounded-t-xl">
+      <div class="bg-white dark:bg-zinc-900 md:rounded-t-xl">
         <ProjectPreview projects={getProjects()} tags={tags} ></ProjectPreview>
       </div>
     </>
