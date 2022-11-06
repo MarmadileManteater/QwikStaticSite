@@ -1,5 +1,4 @@
 import { component$ } from '@builder.io/qwik';
-import { Link } from '@builder.io/qwik-city';
 import { IProject, IProjectButtonData, ITag } from '../../models/project'; 
 import ProjectCard from '../project-card/project-card';
 import ProjectButton from '../project-button/project-button';
