@@ -23,6 +23,10 @@ body {
   image-rendering: pixelated;
 }
 
+body img, body span {
+  image-rendering: initial;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
