@@ -29,7 +29,7 @@ export default component$(({ projects, tags } : IProps) => {
           })}
         </ProjectCard>
       })}
-      <Link href="/projects" class="p-5 inline-block hover:underline">View more &raquo;</Link>
+      <a href="/projects" class="p-5 inline-block hover:underline">View more &raquo;</a>
     </div>
   );
 });
