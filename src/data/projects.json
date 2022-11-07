@@ -28,7 +28,7 @@
       {
         "prefix": "View the",
         "locationName": "web version",
-        "link": "freetube/#/",
+        "link": "/freetube/#/",
         "target": "self"
       },
       {
