@@ -5,10 +5,10 @@ import ProjectButton from '../project-button/project-button'
 
 interface IProps {
     projects: Array<IProject>,
-    tags: Array<ITag>
+    tagData: Array<ITag>
 }
 
-export default component$(({ projects, tags } : IProps) => {
+export default component$(({ projects, tagData } : IProps) => {
   const state = useStore({
     projectsSorted: projects,
     sortType: 'featured'
@@ -31,14 +31,10 @@ export default component$(({ projects, tags } : IProps) => {
       <a class={`${state.sortType === 'featured'?'decoration-solid underline cursor-default':'cursor-pointer'} select-none p-4 inline-block`} onClick$={() => { state.sortType = 'featured' }}>Sort by featured</a>
       <a class={`${state.sortType === 'lastUpdate'?'decoration-solid underline cursor-default':'cursor-pointer'} select-none p-4 inline-block`} onClick$={() => { state.sortType = 'lastUpdate' }}>Sort by last updated</a>
       {state.projectsSorted.map((project : IProject, index : number) => {
+        const { title, buttons, summary, thumbnail, tags} = project
+        const titleLink = buttons.at(-1)?.link
         return <ProjectCard
-          title={project.title}
-          titleLink={project.buttons.at(-1)?.link}
-          summary={project.summary}
-          thumbnail={project.thumbnail}
-          tags={project.tags}
-          tagData={tags}
-          index={index}
+          {...{title, titleLink, buttons, summary, thumbnail, tags, tagData, index: index }}
         >
           {project.buttons.map((entry : IProjectButtonData, index : number) => {
             const { link, target } = entry

@@ -46,7 +46,7 @@ export default component$(() => {
         </div>
       </div>
       <div class='bg-white dark:bg-zinc-900 md:rounded-t-xl'>
-        <ProjectPreview projects={getProjects()} tags={tags} ></ProjectPreview>
+        <ProjectPreview projects={getProjects()} tagData={tags} ></ProjectPreview>
       </div>
     </>
   )

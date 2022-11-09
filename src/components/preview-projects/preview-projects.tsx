@@ -4,27 +4,23 @@ import ProjectCard from '../project-card/project-card'
 import ProjectButton from '../project-button/project-button'
 interface IProps {
     projects: Array<IProject>,
-    tags: Array<ITag>
+    tagData: Array<ITag>
 }
-export default component$(({ projects, tags } : IProps) => {
+export default component$(({ projects, tagData } : IProps) => {
 
   return (
     <div class='project-list rounded-t-xl' style='overflow:hidden;'>
       {projects.map((project : IProject, index : number) => {
+        const { title, buttons, summary, thumbnail, tags} = project
+        const titleLink = buttons.at(-1)?.link
         return <ProjectCard
-          title={project.title}
-          titleLink={project.buttons.at(-1)?.link}
-          summary={project.summary}
-          thumbnail={project.thumbnail}
-          tags={project.tags}
-          tagData={tags}
-          index={index + 1}
+          {...{title, titleLink, buttons, summary, thumbnail, tags, tagData, index: index + 1 }}
         >
           {project.buttons.map((entry : IProjectButtonData, index : number) => {
-            const { link, target } = entry
+            const { link, target, prefix, locationName } = entry
             return <ProjectButton
               {...{ link, target, index }}
-            >{entry.prefix} <strong>{entry.locationName}</strong></ProjectButton>
+            >{prefix} <strong>{locationName}</strong></ProjectButton>
           })}
         </ProjectCard>
       })}
