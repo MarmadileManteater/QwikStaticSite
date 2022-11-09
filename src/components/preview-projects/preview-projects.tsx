@@ -18,12 +18,12 @@ export default component$(({ projects, tags } : IProps) => {
           thumbnail={project.thumbnail}
           tags={project.tags}
           tagData={tags}
-          color={index + 1}
+          index={index + 1}
         >
           {project.buttons.map((entry : IProjectButtonData, index : number) => {
+            const { link, target } = entry
             return <ProjectButton
-              data={entry}
-              color={index}
+              {...{ link, target, index }}
             >{entry.prefix} <strong>{entry.locationName}</strong></ProjectButton>
           })}
         </ProjectCard>
