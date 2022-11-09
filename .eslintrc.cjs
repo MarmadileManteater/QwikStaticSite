@@ -36,6 +36,9 @@ module.exports = {
     'no-case-declarations': 'off',
     'no-console': 'off',
     '@typescript-eslint/no-unused-vars': ['error'],
-    "indent": ["error", 2]
+    'indent': ['error', 2],
+    'semi': ['error', 'never'],
+    'quotes': [2, 'single', { 'avoidEscape': true }],
+    'jsx-quotes': ['error', 'prefer-single']
   },
-};
+}

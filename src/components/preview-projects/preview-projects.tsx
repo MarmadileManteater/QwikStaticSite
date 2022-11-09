@@ -1,7 +1,7 @@
-import { component$ } from '@builder.io/qwik';
-import { IProject, IProjectButtonData, ITag } from '../../models/project'; 
-import ProjectCard from '../project-card/project-card';
-import ProjectButton from '../project-button/project-button';
+import { component$ } from '@builder.io/qwik'
+import { IProject, IProjectButtonData, ITag } from '../../models/project'
+import ProjectCard from '../project-card/project-card'
+import ProjectButton from '../project-button/project-button'
 interface IProps {
     projects: Array<IProject>,
     tags: Array<ITag>
@@ -9,7 +9,7 @@ interface IProps {
 export default component$(({ projects, tags } : IProps) => {
 
   return (
-    <div class="project-list rounded-t-xl" style="overflow:hidden;">
+    <div class='project-list rounded-t-xl' style='overflow:hidden;'>
       {projects.map((project : IProject, index : number) => {
         return <ProjectCard
           title={project.title}
@@ -28,7 +28,7 @@ export default component$(({ projects, tags } : IProps) => {
           })}
         </ProjectCard>
       })}
-      <a href="/projects" class="p-5 inline-block hover:underline">View more &raquo;</a>
+      <a href='/projects' class='p-5 inline-block hover:underline'>View more &raquo;</a>
     </div>
-  );
-});
+  )
+})

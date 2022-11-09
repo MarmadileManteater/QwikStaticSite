@@ -1,6 +1,6 @@
-import { component$, Slot, useStylesScoped$ } from '@builder.io/qwik';
+import { component$, Slot, useStylesScoped$ } from '@builder.io/qwik'
 import { ITag } from '../../models/project'
-import styles from './project-card.css?inline';
+import styles from './project-card.css?inline'
 
 interface IProps {
     title: string
@@ -29,16 +29,16 @@ export default component$(({ title, titleLink, summary, thumbnail, tags, tagData
   }
   return (
     <div class={`md:pt-0 pt-4 project-card outer-grid ${index % 2 === 0?'bg-zinc-100':'bg-white'} ${index % 2 === 0?'dark:bg-zinc-800':'dark:bg-zinc-900'} dark:text-white`}>
-      <div class="p-4 pr-0 image-grid">
+      <div class='p-4 pr-0 image-grid'>
         <a href={titleLink}><img src={thumbnail} alt={title} /></a>
       </div>
-      <div class="p-4 pl-4">
+      <div class='p-4 pl-4'>
         {getTagArray(tags).map((tag : ITag|undefined) => {
           if (!tag) return
-          return <a href={tag.link} target="_blank" ><span class={[tag.name, 'align-top', 'hover:underline', 'p-2', 'bg-zinc-200', 'dark:bg-zinc-700', 'dark:text-white', 'rounded-xl', 'mr-3','mb-2','mt-2', 'inline-block']}>{tag.name}</span></a>
+          return <a href={tag.link} target='_blank' ><span class={[tag.name, 'align-top', 'hover:underline', 'p-2', 'bg-zinc-200', 'dark:bg-zinc-700', 'dark:text-white', 'rounded-xl', 'mr-3','mb-2','mt-2', 'inline-block']}>{tag.name}</span></a>
         })}
-        <a href={titleLink} class="hover:underline"><h2 class={`font-bold text-2xl mb-4 ${title.search(' ') === -1?'break-all':'break-words'}`}>{title}</h2></a>
-        <p class="mb-3">{summary}</p>
+        <a href={titleLink} class='hover:underline'><h2 class={`font-bold text-2xl mb-4 ${title.search(' ') === -1?'break-all':'break-words'}`}>{title}</h2></a>
+        <p class='mb-3'>{summary}</p>
         <Slot />
       </div>
     </div>
