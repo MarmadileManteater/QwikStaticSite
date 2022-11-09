@@ -1,9 +1,7 @@
-import { component$, useStylesScoped$ } from '@builder.io/qwik';
-import styles from './header.css?inline';
+import { component$ } from '@builder.io/qwik';
 import headerImage from '../../images/marmadilemanteater.png';
 
 export default component$(() => {
-  useStylesScoped$(styles);
 
   return (
     <header>
