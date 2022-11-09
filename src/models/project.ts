@@ -8,7 +8,7 @@ export interface IProjectButtonData {
 }
   
 export interface IProject {
-  title: string;
+  title: string
   tags: Array<string>
   summary: string
   buttons: Array<IProjectButtonData>

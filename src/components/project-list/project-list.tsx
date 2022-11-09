@@ -4,7 +4,7 @@ import ProjectCard from '../project-card/project-card'
 import ProjectButton from '../project-button/project-button'
 
 interface IProps {
-    projects: Array<IProject>,
+    projects: Array<IProject>
     tagData: Array<ITag>
 }
 
