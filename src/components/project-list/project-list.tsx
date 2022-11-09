@@ -42,9 +42,8 @@ export default component$(({ projects, tags } : IProps) => {
         >
           {project.buttons.map((entry : IProjectButtonData, index : number) => {
             const { link, target } = entry
-            const projectButtonProperties = { link, target, index }
             return <ProjectButton
-              {...projectButtonProperties}
+              {...{ link, target, index }}
             >{entry.prefix} <strong>{entry.locationName}</strong></ProjectButton>
           })}
         </ProjectCard>
