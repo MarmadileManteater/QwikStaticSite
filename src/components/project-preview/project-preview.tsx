@@ -24,7 +24,7 @@ export default component$(({ projects, tagData } : IProps) => {
           })}
         </ProjectCard>
       })}
-      <a href='/projects' class='p-5 inline-block hover:underline'>View more &raquo;</a>
+      <a href='./projects' class='p-5 inline-block hover:underline'>View more &raquo;</a>
     </div>
   )
 })
