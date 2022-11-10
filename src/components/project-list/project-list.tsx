@@ -34,7 +34,7 @@ export default component$(({ projects, tagData } : IProps) => {
         const { title, buttons, summary, thumbnail, tags} = project
         const titleLink = buttons.at(-1)?.link
         return <ProjectCard
-          {...{title, titleLink, buttons, summary, thumbnail, tags, tagData, index: index }}
+          {...{title, titleLink, summary, thumbnail, tags, tagData, index: index }}
         >
           {project.buttons.map((entry : IProjectButtonData, index : number) => {
             const { link, target } = entry
