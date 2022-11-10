@@ -2,7 +2,7 @@ import { component$ } from '@builder.io/qwik'
 import type { DocumentHead } from '@builder.io/qwik-city'
 import tags from '../data/tags.json'
 import projectsData from '../data/projects.json'
-import ProjectPreview from '../components/preview-projects/preview-projects'
+import ProjectPreview from '../components/project-preview/project-preview'
 import portrait from '../images/portrait.png'
 import favicon from '../images/favicon.ico'
 export default component$(() => {
