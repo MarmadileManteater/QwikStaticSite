@@ -1,0 +1,42 @@
+
+:root {
+  --outline-color: #000;
+}
+
+header h2 {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 420px) {
+  header h2 {
+    flex-direction: column;
+  }
+}
+
+.red {
+  --outline-color: #811212;
+}
+
+.green {
+  --outline-color: #12812a;
+}
+
+.text-outline {
+  /*
+      style adapted from this answer by Elvin Mammadov
+      https://stackoverflow.com/a/47884204
+  */
+  text-shadow: 4px 0 0 var(--outline-color),
+              -4px 0 0 var(--outline-color),
+              0 4px 0 var(--outline-color),
+              0 -4px 0 var(--outline-color),
+              2px 2px var(--outline-color),
+              -2px -2px 0 var(--outline-color),
+              2px -2px 0 var(--outline-color),
+              -2px 2px 0 var(--outline-color);
+}
+
+header {
+  max-width: 100%;
+}
