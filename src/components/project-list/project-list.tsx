@@ -34,12 +34,14 @@ export default component$(({ projects, tagData } : IProps) => {
         const { title, buttons, summary, thumbnail, tags} = project
         const titleLink = buttons.at(-1)?.link
         return <ProjectCard
-          {...{title, titleLink, summary, thumbnail, tags, tagData, index: index, key: `project-card-${index}` }}
+          key={`project-card-${index}`}
+          {...{title, titleLink, summary, thumbnail, tags, tagData, index: index }}
         >
-          {project.buttons.map((entry : IProjectButtonData, button_index : number) => {
+          {project.buttons.map((entry : IProjectButtonData, buttonIndex : number) => {
             const { link, target } = entry
             return <ProjectButton
-              {...{ link, target, index: button_index, key: `project-button-${index}` }}
+              key={`project-button-${index}-${buttonIndex}`}
+              {...{ link, target, index: buttonIndex }}
             >{entry.prefix} <strong>{entry.locationName}</strong></ProjectButton>
           })}
         </ProjectCard>

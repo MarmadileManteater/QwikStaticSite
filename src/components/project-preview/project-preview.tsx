@@ -15,12 +15,14 @@ export default component$(({ projects, tagData } : IProps) => {
         const { title, buttons, summary, thumbnail, tags} = project
         const titleLink = buttons.at(-1)?.link
         return <ProjectCard
-          {...{title, titleLink, buttons, summary, thumbnail, tags, tagData, index: index + 1, key: `project-card-${index}` }}
+          key={`project-card-${index}`}
+          {...{title, titleLink, buttons, summary, thumbnail, tags, tagData, index: index + 1 }}
         >
           {project.buttons.map((entry : IProjectButtonData, button_index : number) => {
             const { link, target, prefix, locationName } = entry
             return <ProjectButton
-              {...{ link, target, index: button_index, key: `project-button-${index}-${button_index}` }}
+              key={`project-button-${button_index}-${index}`}
+              {...{ link, target, index: button_index }}
             >{prefix} <strong>{locationName}</strong></ProjectButton>
           })}
         </ProjectCard>
