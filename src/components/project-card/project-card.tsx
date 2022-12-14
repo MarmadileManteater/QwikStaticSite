@@ -1,6 +1,7 @@
 import { component$, Slot, useStylesScoped$ } from '@builder.io/qwik'
 import { ITag } from '../../models/project'
 import styles from './project-card.css?inline'
+import Image from '../image/image'
 
 interface IProps {
     title: string
@@ -30,7 +31,7 @@ export default component$(({ title, titleLink, summary, thumbnail, tags, tagData
   return (
     <div class={`project-card md:pt-0 pt-4 outer-grid ${index % 2 === 0?'bg-zinc-100':'bg-white'} ${index % 2 === 0?'dark:bg-zinc-800':'dark:bg-zinc-900'} dark:text-white`}>
       <div class='p-4 pr-0 image-grid'>
-        <a href={titleLink}><img src={thumbnail} alt={title} /></a>
+        <a href={titleLink}><Image src={thumbnail} alt={title} style='max-height: 153px; display: inline-block;' /></a>
       </div>
       <div class='p-4 pl-4'>
         {getTagArray(tags).map((tag : ITag|undefined, index : number) => {
