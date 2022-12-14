@@ -33,9 +33,11 @@ export default component$(({ title, titleLink, summary, thumbnail, tags, tagData
         <a href={titleLink}><img src={thumbnail} alt={title} /></a>
       </div>
       <div class='p-4 pl-4'>
-        {getTagArray(tags).map((tag : ITag|undefined) => {
+        {getTagArray(tags).map((tag : ITag|undefined, index : number) => {
           if (!tag) return
-          return <a href={tag.link} target='_blank' ><span class={[tag.name, 'align-top', 'hover:underline', 'p-2', 'bg-zinc-200', 'dark:bg-zinc-700', 'dark:text-white', 'rounded-xl', 'mr-3','mb-2','mt-2', 'inline-block']}>{tag.name}</span></a>
+          return <a key={`tag-${index}`} href={tag.link} target='_blank' >
+            <span class={[tag.name, 'align-top', 'hover:underline', 'p-2', 'bg-zinc-200', 'dark:bg-zinc-700', 'dark:text-white', 'rounded-xl', 'mr-3','mb-2','mt-2', 'inline-block']}>{tag.name}</span>
+          </a>
         })}
         <a href={titleLink} class='hover:underline'><h2 class={`font-bold text-2xl mb-4 ${title.search(' ') === -1?'break-all':'break-words'}`}>{title}</h2></a>
         <p class='mb-3'>{summary}</p>
