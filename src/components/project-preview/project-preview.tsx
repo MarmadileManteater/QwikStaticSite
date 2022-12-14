@@ -1,4 +1,5 @@
 import { component$ } from '@builder.io/qwik'
+import { Link } from '@builder.io/qwik-city'
 import { IProject, IProjectButtonData, ITag } from '../../models/project'
 import ProjectCard from '../project-card/project-card'
 import ProjectButton from '../project-button/project-button'
@@ -24,7 +25,7 @@ export default component$(({ projects, tagData } : IProps) => {
           })}
         </ProjectCard>
       })}
-      <a href='./projects' class='p-5 inline-block hover:underline'>View more &raquo;</a>
+      <Link href='./projects' class='p-5 inline-block hover:underline'>View more &raquo;</Link>
     </div>
   )
 })

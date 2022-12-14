@@ -1,0 +1,3 @@
+[submodule "qwik"]
+	path = qwik
+	url = https://github.com/MarmadileManteater/qwik

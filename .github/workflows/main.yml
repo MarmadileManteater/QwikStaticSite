@@ -15,6 +15,11 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: 🏗 Build my ⚡Qwik fork
+        run: |
+          cd qwik
+          pnpm build.full
+
       - name: 🧶 Yarn 
         run: yarn
 
