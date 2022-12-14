@@ -5,7 +5,7 @@ export default component$(() => {
   return (
     <>
       <Header />
-      <main style='width:1000px;max-width:100%;margin-left:auto;margin-right:auto;overflow:hidden;'>
+      <main style='width:1000px;max-width:100%;margin-left:auto;margin-right:auto;'>
         <section>
           <Slot />
         </section>

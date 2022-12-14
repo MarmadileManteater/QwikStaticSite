@@ -45,6 +45,7 @@ export default component$(() => {
             <li><a rel='me' href='https://mastodon.gamedev.place/@emma' target='_blank' class='md:text-base text-xl pr-4 mr-4 block hover:underline hover:bg-zinc-200  hover:dark:bg-zinc-700 text-blue-600 dark:text-red-300 pb-2 pt-2 md:p-0'>💬 Mastodon</a></li>
           </ul>
         </div>
+        <Image src={demon} alt="demon holding sign with misspelling; please be patient with the little demon; he's trying" class='drink-coffee-sign' />
       </div>
       <div class='bg-white dark:bg-zinc-900 md:rounded-t-xl'>
         <ProjectPreview projects={getProjects()} tagData={tags} ></ProjectPreview>
