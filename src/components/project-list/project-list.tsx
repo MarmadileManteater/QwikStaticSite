@@ -1,4 +1,4 @@
-import { component$, useStore, useWatch$ } from '@builder.io/qwik'
+import { component$, useStore, useTask$ } from '@builder.io/qwik'
 import { IProject, IProjectButtonData, ITag } from '../../models/project'
 import ProjectCard from '../project-card/project-card'
 import ProjectButton from '../project-button/project-button'
@@ -14,7 +14,7 @@ export default component$(({ projects, tagData } : IProps) => {
     sortType: 'featured'
   })
 
-  useWatch$(({track}) => {
+  useTask$(({track}) => {
     track(() => state.sortType)
     switch (state.sortType) {
     case 'featured':
@@ -34,12 +34,12 @@ export default component$(({ projects, tagData } : IProps) => {
         const { title, buttons, summary, thumbnail, tags} = project
         const titleLink = buttons.at(-1)?.link
         return <ProjectCard
-          {...{title, titleLink, summary, thumbnail, tags, tagData, index: index }}
+          {...{title, titleLink, summary, thumbnail, tags, tagData, index: index, key: `project-card-${index}` }}
         >
-          {project.buttons.map((entry : IProjectButtonData, index : number) => {
+          {project.buttons.map((entry : IProjectButtonData, button_index : number) => {
             const { link, target } = entry
             return <ProjectButton
-              {...{ link, target, index }}
+              {...{ link, target, index: button_index, key: `project-button-${index}` }}
             >{entry.prefix} <strong>{entry.locationName}</strong></ProjectButton>
           })}
         </ProjectCard>
