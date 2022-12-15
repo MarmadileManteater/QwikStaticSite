@@ -11,7 +11,7 @@
     vfile "5.3.6"
 
 "@builder.io/qwik@./qwik/packages/qwik/dist":
-  version "0.15.2-dev20221214170618"
+  version "0.15.2-dev20221215223528"
 
 "@cush/relative@^1.0.0":
   version "1.0.0"
