@@ -16,7 +16,7 @@ export default component$(({videoId, server = 'http://invidious.sethforprivacy.c
     itag: itag,
     videoUrl: '',// computed
     invidiousUrl: '',// computed
-    video: {}// HTMLVideoElement
+    video: {} as HTMLVideoElement
   })
   // subscribe videoUrl and invidiousUrl to the changes of all the props
   useTask$(({track}) => {
@@ -34,49 +34,41 @@ export default component$(({videoId, server = 'http://invidious.sethforprivacy.c
   ]
   useClientEffect$(() => {
     const onFirstInteraction = () => {
-      // this will only run once store.video is a node, 
-      // but 🤷‍♀️IDK how to talk about that on the server because
-      // all the HTML classes are undefined
-      // what is the default() for HTMLVideoElement?
-      // null doesn't work
-      if (typeof((store.video as any).nodeName) !== 'undefined') {
-        const element = store.video as HTMLVideoElement
-        const timeUpdate = () => {
-          if (element.currentTime > 3) {
-            element.setAttribute('data-active', 'true')
-            element.removeEventListener('timeupdate', timeUpdate)
-          }
+      const timeUpdate = () => {
+        if (store.video.currentTime > 3) {
+          store.video.setAttribute('data-active', 'true')
+          store.video.removeEventListener('timeupdate', timeUpdate)
         }
-        const onError = async () => {
-          console.warn(`Issue loading from instance '${store.server}'; attempting another . . . `)
-          try {
-            let tryServer = store.server
-            while (tryServer === store.server) {
-              tryServer = invidiousInstanceList[Math.ceil(invidiousInstanceList.length * Math.random()) - 1]
-            }
-            store.server = tryServer
-            if (isBrowser) {
-              // in the browser, play the video whenever it's attributes change
-              new MutationObserver((_, observer) => {
-                element.play()
-                observer.disconnect()
-              }).observe(element, { attributes: true, characterData: false, characterDataOldValue: false, childList: false })
-            }
-          } catch (error) {
-            console.error(error)
-          }
-        }
-        element.addEventListener('error', onError)
-        element.addEventListener('timeupdate', timeUpdate)
-        setTimeout(() => {
-          if (element.currentTime == 0) {
-            // Timeout error
-            onError()
-          }
-        }, 6000)
-        cleanUp()
-        element.play()
       }
+      const onError = async () => {
+        console.warn(`Issue loading from instance '${store.server}'; attempting another . . . `)
+        try {
+          let tryServer = store.server
+          while (tryServer === store.server) {
+            tryServer = invidiousInstanceList[Math.ceil(invidiousInstanceList.length * Math.random()) - 1]
+          }
+          store.server = tryServer
+          if (isBrowser) {
+            // in the browser, play the video whenever it's attributes change
+            new MutationObserver((_, observer) => {
+              store.video.play()
+              observer.disconnect()
+            }).observe(store.video, { attributes: true, characterData: false, characterDataOldValue: false, childList: false })
+          }
+        } catch (error) {
+          console.error(error)
+        }
+      }
+      store.video.addEventListener('error', onError)
+      store.video.addEventListener('timeupdate', timeUpdate)
+      setTimeout(() => {
+        if (store.video.currentTime == 0) {
+          // Timeout error
+          onError()
+        }
+      }, 6000)
+      cleanUp()
+      store.video.play()
     }
     const cleanUp = () => {
       window.removeEventListener('click', onFirstInteraction)
