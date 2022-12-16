@@ -18,6 +18,7 @@ jobs:
       - name: 🏗 Build my ⚡Qwik fork
         run: |
           cd qwik
+          pnpm install
           pnpm build.full
 
       - name: 🧶 Yarn 

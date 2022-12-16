@@ -11,44 +11,6 @@
     text-align: center;
 }
 
-.csharp {
-    background-image: url('../../images/csharp-logo.png');
-    background-color: transparent;
-    background-size: 40px;
-    background-repeat: no-repeat;
-    width: 40px;
-    height: 40px;
-    color: transparent;
-    user-select: none;
-    overflow: hidden;
-}
-
-.javascript {
-    background-image: url('../../images/js-logo.png');
-    background-color: transparent;
-    background-size: 40px;
-    background-repeat: no-repeat;
-    width: 40px;
-    height: 40px;
-    color: transparent;
-    user-select: none;
-    overflow: hidden;
-    border-radius: 0;
-}
-
-.python {
-    background-image: url('../../images/python-logo.png');
-    background-color: transparent;
-    background-size: 40px;
-    background-repeat: no-repeat;
-    width: 40px;
-    height: 40px;
-    color: transparent;
-    user-select: none;
-    overflow: hidden;
-    border-radius: 0;
-}
-
 @media (max-width: 768px) {
     .outer-grid {
         display: block;

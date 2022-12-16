@@ -8,7 +8,7 @@ interface IProps {
   itag?: string
 }
 
-export default component$(({videoId, server = 'http://invidious.sethforprivacy.com', itag = '22' } : IProps) => {
+export default component$(({videoId, server = 'http://localhost:3000', itag = '22' } : IProps) => {
   useStylesScoped$(scoped)
   const store = useStore({
     videoId: videoId,
