@@ -6,7 +6,8 @@ import ProjectPreview from '../components/project-preview/project-preview'
 import Image from '../components/image/image'
 import portrait from '../images/portrait.png'
 import favicon from '../images/favicon.ico'
-import demon from '../images/drink-coffee-hail-satan.png'
+/* import demon1 from '../images/drink-coffee-hail-satan.png' */
+import demon2 from '../images/sign-2.png'
 export default component$(() => {
 
   const getProjects = () => {
@@ -27,7 +28,6 @@ export default component$(() => {
 
   return (
     <>
-
       <div class='md:flex' style='justify-content: center; position: relative'>
         <div class='bg-white dark:bg-zinc-900 rounded-t-xl md:rounded-xl md:mb-3 p-5 mr-3 md:w-1/2 w-full'>
           <div class='sm:flex'>
@@ -45,7 +45,8 @@ export default component$(() => {
             <li><a rel='me' href='https://mastodon.gamedev.place/@emma' target='_blank' class='md:text-base text-xl pr-4 mr-4 block hover:underline hover:bg-zinc-200  hover:dark:bg-zinc-700 text-blue-600 dark:text-red-300 pb-2 pt-2 md:p-0'>💬 Mastodon</a></li>
           </ul>
         </div>
-        <Image src={demon} alt="demon holding sign with misspelling; please be patient with the little demon; he's trying" class='drink-coffee-sign' />
+        {/*<Image src={demon1} alt="demon holding sign with misspelling; please be patient with the little demon; he's trying" class='drink-coffee-sign' />*/}
+        <Image src={demon2} alt="demon holding sign in enochian; the sign translates to 'drinc coffee hail satan'" class='drink-coffee-sign-2' />
       </div>
       <div class='bg-white dark:bg-zinc-900 md:rounded-t-xl'>
         <ProjectPreview projects={getProjects()} tagData={tags} ></ProjectPreview>

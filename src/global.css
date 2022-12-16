@@ -35,6 +35,14 @@ body img, body span {
   bottom: -14px;
 }
 
+.drink-coffee-sign-2 {
+  width: 128px;
+  image-rendering: pixelated;
+  position: absolute;
+  right: 0;
+  bottom: -14px;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
