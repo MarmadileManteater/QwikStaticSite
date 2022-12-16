@@ -1,4 +1,5 @@
-import { component$, Slot, useClientEffect$, useStylesScoped$ } from '@builder.io/qwik'
+import { component$, Slot, useClientEffect$, useStylesScoped$, useStore, useTask$, $ } from '@builder.io/qwik'
+import { isBrowser } from '@builder.io/qwik/build'
 import scoped from './invidious-video-background.css?inline'
 
 interface IProps {
@@ -6,43 +7,40 @@ interface IProps {
   server?: string,
   itag?: string
 }
-/*
-// Commenting out the code for fetching instances from https://api.invidious.io/instances.json
-// It is more helpful to just have a small curated list of instances that will *probably* work
-// which I keep updated
-interface InvidiousInstance {
-  api: boolean,
-  cors: boolean,
-  uri: string
-}
-*/
-export default component$(({videoId, server = 'https://invidious.namazso.eu', itag = '22' } : IProps) => {
+
+export default component$(({videoId, server = 'http://invidious.sethforprivacy.com', itag = '22' } : IProps) => {
   useStylesScoped$(scoped)
-  /*
-  const fetchInvidiousInstances = $(async () : Promise<InvidiousInstance[]> => {
-    try {
-      const invidiousInstanceList = await (await fetch('https://api.invidious.io/instances.json')).json()
-      return invidiousInstanceList.filter((instance : Array<any>) => instance[1].api && instance[1].cors).map((instance : Array<any>) => instance[1])
-    } catch (error) {
-      console.warn(error)
-      return new Array<InvidiousInstance>()
-    }
+  const store = useStore({
+    videoId: videoId,
+    server: server,
+    itag: itag,
+    videoUrl: '',// computed
+    invidiousUrl: '',// computed
+    video: {}// HTMLVideoElement
   })
-  */
+  // subscribe videoUrl and invidiousUrl to the changes of all the props
+  useTask$(({track}) => {
+    track(() => store.videoId)
+    track(() => store.server)
+    track(() => store.itag)
+    // will run when the component mounts and every time urls need to change
+    store.videoUrl = `${store.server}/latest_version?id=${store.videoId}&itag=${store.itag}&local=true`
+    store.invidiousUrl = `${store.server}/watch?v=${store.videoId}`
+  })
   const invidiousInstanceList = [
     'https://invidious.sethforprivacy.com',
     'https://invidious.namazso.eu',
-    'https://invidious.tiekoetter.com'
+    'https://yt.artemislena.eu'
   ]
-
-  // this is wrong, but I'm unsure how to ref an element correctly 🤔
-  const id = `invidious-video-background-${videoId}-${Math.floor(Math.random() * 1000000)}`
-  // also known as use 🦶🔫
   useClientEffect$(() => {
     const onFirstInteraction = () => {
-      // this is wrong, but I'm unsure how to ref an element correctly 🤔
-      const element = document.getElementById(id) as HTMLVideoElement
-      if (element) {
+      // this will only run once store.video is a node, 
+      // but 🤷‍♀️IDK how to talk about that on the server because
+      // all the HTML classes are undefined
+      // what is the default() for HTMLVideoElement?
+      // null doesn't work
+      if (typeof((store.video as any).nodeName) !== 'undefined') {
+        const element = store.video as HTMLVideoElement
         const timeUpdate = () => {
           if (element.currentTime > 3) {
             element.setAttribute('data-active', 'true')
@@ -50,14 +48,20 @@ export default component$(({videoId, server = 'https://invidious.namazso.eu', it
           }
         }
         const onError = async () => {
-          console.error(`Issue loading from instance '${server}'`)
+          console.warn(`Issue loading from instance '${server}'; attempting another . . . `)
           try {
-            let tryServer = server
-            while (tryServer === server) {
+            let tryServer = store.server
+            while (tryServer === store.server) {
               tryServer = invidiousInstanceList[Math.ceil(invidiousInstanceList.length * Math.random()) - 1]
             }
-            element.src = `${tryServer}/latest_version?id=${videoId}&itag=${itag}&local=true`            
-            element.play()
+            store.server = tryServer
+            if (isBrowser) {
+              // in the browser, play the video whenever it's attributes change
+              new MutationObserver((_, observer) => {
+                element.play()
+                observer.disconnect()
+              }).observe(element, { attributes: true, characterData: false, characterDataOldValue: false, childList: false })
+            }
           } catch (error) {
             console.error(error)
           }
@@ -70,9 +74,9 @@ export default component$(({videoId, server = 'https://invidious.namazso.eu', it
             onError()
           }
         }, 6000)
+        cleanUp()
         element.play()
       }
-      cleanUp()
     }
     const cleanUp = () => {
       window.removeEventListener('click', onFirstInteraction)
@@ -84,9 +88,10 @@ export default component$(({videoId, server = 'https://invidious.namazso.eu', it
 
   return (
     <>
-      <video id={id} loop src={`${server}/latest_version?id=${videoId}&itag=${itag}&local=true`} >
+      <video ref={$((video : Element) => { store.video = video as HTMLVideoElement })} loop src={store.videoUrl} >
         <Slot/>
       </video>
+      <a href={store.invidiousUrl} class='hover:underline text-blue text-blue-600 dark:text-red-300' >Watch this video on 📺Invidious</a>
     </>
   )
 })
