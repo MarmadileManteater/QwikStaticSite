@@ -48,7 +48,7 @@ export default component$(({videoId, server = 'http://invidious.sethforprivacy.c
           }
         }
         const onError = async () => {
-          console.warn(`Issue loading from instance '${server}'; attempting another . . . `)
+          console.warn(`Issue loading from instance '${store.server}'; attempting another . . . `)
           try {
             let tryServer = store.server
             while (tryServer === store.server) {
@@ -91,7 +91,7 @@ export default component$(({videoId, server = 'http://invidious.sethforprivacy.c
       <video ref={$((video : Element) => { store.video = video as HTMLVideoElement })} loop src={store.videoUrl} >
         <Slot/>
       </video>
-      <a href={store.invidiousUrl} class='hover:underline text-blue text-blue-600 dark:text-red-300' >Watch this video on 📺Invidious</a>
+      <a target='_blank' href={store.invidiousUrl} class='hover:underline text-blue text-blue-600 dark:text-red-300 dark:bg-zinc-900 bg-white p-3' >Watch this video on 📺Invidious</a>
     </>
   )
 })
