@@ -7,5 +7,6 @@ export interface IBlogPost {
   tags: string[]
   atime: number
   mtime: number
-  ctime: number
+  ctime: number,
+  gittime: number
 }

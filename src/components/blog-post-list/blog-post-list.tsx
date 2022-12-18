@@ -16,7 +16,7 @@ export default component$(({posts, tagData} : IProps) => {
           <div class='p-8'>
             <Link href={`/blog/${post.id}/`} class='hover:underline' ><h2 class='text-4xl'>{post.title}</h2></Link>
             <TagList {...{tags: post.tags, tagData }} />
-            <p class='pb-2'><em>Last updated {new Date(post.ctime).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZone: 'GMT' })} UTC</em></p>
+            <p class='pb-2'><em>Last updated {new Date(post.gittime).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZone: 'GMT' })} UTC</em></p>
             <div>{post.shortDescription}</div>
           </div>
         </>

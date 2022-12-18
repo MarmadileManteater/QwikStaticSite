@@ -43,7 +43,7 @@ export default component$(() => {
             <li><a href='https://marmadilemanteater.itch.io/' target='_blank' class='md:text-base text-xl pr-4 mr-4 block hover:underline hover:bg-zinc-200 hover:dark:bg-zinc-700 text-blue-600 dark:text-red-300 pb-2 pt-2 md:p-0'>🕹 itch.io</a></li>
             <li><a href='https://opengameart.org/users/marmadilemanteater' target='_blank' class='md:text-base text-xl pr-4 mr-4 block hover:underline hover:bg-zinc-200  hover:dark:bg-zinc-700 text-blue-600 dark:text-red-300 pb-2 pt-2 md:p-0'>🎨 OpenGameArt</a></li>
             <li><a rel='me' href='https://mastodon.gamedev.place/@emma' target='_blank' class='md:text-base text-xl pr-4 mr-4 block hover:underline hover:bg-zinc-200  hover:dark:bg-zinc-700 text-blue-600 dark:text-red-300 pb-2 pt-2 md:p-0'>💬 Mastodon</a></li>
-            <li><Link href='/blog/' class='md:text-base text-xl pr-4 mr-4 block hover:underline hover:bg-zinc-200  hover:dark:bg-zinc-700 text-blue-600 dark:text-red-300 pb-2 pt-2 md:p-0'>🗨Blog</Link></li>
+            <li><Link href='/blog/' class='md:text-base text-xl pr-4 mr-4 block hover:underline hover:bg-zinc-200  hover:dark:bg-zinc-700 text-blue-600 dark:text-red-300 pb-2 pt-2 md:p-0'>🗨 Blog</Link></li>
           </ul>
         </div>
         {/*<Image src={demon1} alt="demon holding sign with misspelling; please be patient with the little demon; he's trying" class='drink-coffee-sign' />*/}
