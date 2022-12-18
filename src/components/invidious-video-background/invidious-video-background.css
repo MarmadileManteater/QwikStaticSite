@@ -10,19 +10,10 @@ video[data-active="true"] + a {
   bottom: 0px;
   right: 0px;
   border-radius: 5px 0 0 0;
-  /* 
-     this is a DIRTY TRICK🐰🎩 
-     the real text is present in the HTML 
-     for accessibility purposes, but I
-     control what is visibly displayed using
-     the before psuedo element
-  */
-  font-size: 0;
 }
 
-video[data-active="true"] + a::before {
-  content: 'Watch this video on 📺Invidious';
-  font-size: initial;
+video[data-active="true"] + a span.link { 
+  display: none;
 }
 
 @media (max-width: 1530px) {
@@ -44,9 +35,13 @@ video[data-active="true"] + a::before {
     bottom: auto;
     border-radius: 0 0 5px 0;
     padding: 3px;
+    font-size: 0;
   }
-  video[data-active="true"] + a::before {
-    content: '🔗📺';
+  video[data-active="true"] + a .icon {
+    font-size: initial;
+  }
+  video[data-active="true"] + a span.link { 
+    display: inline;
   }
 }
 
