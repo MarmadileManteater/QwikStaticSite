@@ -1,3 +1,6 @@
 [submodule "qwik"]
 	path = qwik
 	url = https://github.com/MarmadileManteater/qwik
+[submodule "data"]
+	path = data
+	url = https://github.com/MarmadileManteater/gh-pages-site-data.git

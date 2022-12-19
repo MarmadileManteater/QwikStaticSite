@@ -5,7 +5,7 @@ import { DOMParser, XMLSerializer } from '@xmldom/xmldom'
 
 export function getAllBlogPostIds() : string[] {
   const { readdirSync } = fs
-  return readdirSync('./src/data/posts')
+  return readdirSync('./data/posts')
     .filter((post) => post.endsWith('.html'))
     .map((post) => post.substring(0, post.length - 5))
     .reverse()
@@ -15,13 +15,13 @@ export function getBlogPostById(postId: string) : IBlogPost {
   const { statSync, readFileSync } = fs
   const { execSync } = child_process
   // 📈Retrive the file stats
-  const stats = statSync(`./src/data/posts/${postId}.html`)
+  const stats = statSync(`./data/posts/${postId}.html`)
   // 📄Retrieve the file contents
-  const post =  readFileSync(`./src/data/posts/${postId}.html`).toString()
+  const post =  readFileSync(`./data/posts/${postId}.html`).toString()
   let gitDate
   try {
     // 👩‍💻Retrieve the last modification date known by git
-    const gitDateResult = execSync(`git log -1 -p "./src/data/posts/${postId}.html"`)
+    const gitDateResult = execSync(`git log -1 -p "./data/posts/${postId}.html"`)
     gitDate = Date.parse(Array.from(gitDateResult.toString().matchAll(/Date: {3}([A-Za-z]{3} [A-Za-z]{3} [0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2} [0-9]{4} [-+][0-9]{4})/g))[0][1])
   } catch (err) {
     console.warn(`no git date found for ${postId}; falling back to using file date; this happens when a file does not have any history with git`)

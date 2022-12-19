@@ -4,7 +4,7 @@ import { IBlogPost } from '../../../models/blog'
 import Loading from '../../../components/loading/loading'
 import TagList from '../../../components/tag-list/tag-list'
 import favicon from '../../../images/favicon.ico'
-import tagData from '../../../data/tags.json'
+import tagData from '../../../../data/tags.json'
 import { getAllBlogPostIds, getBlogPostById } from '~/dataservice/blog-posts'
 
 

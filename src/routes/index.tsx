@@ -1,7 +1,7 @@
 import { component$ } from '@builder.io/qwik'
 import { DocumentHead, Link } from '@builder.io/qwik-city'
-import tags from '../data/tags.json'
-import projectsData from '../data/projects.json'
+import tags from '../../data/tags.json'
+import projectsData from '../../data/projects.json'
 import ProjectPreview from '../components/project-preview/project-preview'
 import Image from '../components/image/image'
 import portrait from '../images/portrait.png'
@@ -51,7 +51,7 @@ export default component$(() => {
         <Image src={demon2} alt="demon holding sign in enochian; the sign translates to 'drinc coffee hail satan'" class='drink-coffee-sign-2' />
       </div>
       <div class='bg-white dark:bg-zinc-900 md:rounded-t-xl'>
-        <ProjectPreview projects={getProjects() as Array<IProject> } tagData={tags} ></ProjectPreview>
+        <ProjectPreview projects={getProjects() as Array<IProject>} tagData={tags} ></ProjectPreview>
       </div>
     </>
   )

@@ -1,7 +1,7 @@
 import { component$, Resource, useStore } from '@builder.io/qwik'
 import { DocumentHead, RequestHandler, useEndpoint, Link, useLocation, StaticGenerateHandler } from '@builder.io/qwik-city'
 import { IBlogPost } from '~/models/blog'
-import tagData from '../../../../data/tags.json'
+import tagData from '../../../../../data/tags.json'
 import favicon from '../../../../images/favicon.ico'
 
 import Loading from '~/components/loading/loading'

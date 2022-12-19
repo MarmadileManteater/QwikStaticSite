@@ -1,7 +1,7 @@
 import { component$, Resource, useStore } from '@builder.io/qwik'
 import { DocumentHead, Link, RequestHandler, useEndpoint } from '@builder.io/qwik-city'
 import { IBlogPost } from '~/models/blog'
-import tagData from '../../data/tags.json'
+import tagData from '../../../data/tags.json'
 import favicon from '../../images/favicon.ico'
 
 import Loading from '~/components/loading/loading'
@@ -13,8 +13,9 @@ export const PAGE_SIZE = 5
 
 export default component$(() => {
   const store = useStore({
-    endpoint: useEndpoint<Array<IBlogPost>>()
+    endpoint: useEndpoint<Array<Array<IBlogPost>|number>>()
   })
+
   return (
     <>
       <div class='project-list rounded-t-xl' style='overflow:hidden;'>
@@ -23,11 +24,14 @@ export default component$(() => {
             value={store.endpoint}
             onPending={() => <Loading />}
             onRejected={(reason) => <div>Error {reason}</div> }
-            onResolved={(posts) => {
+            onResolved={([posts, pageCount]) => {
               if (posts)
                 return <>
-                  <UnifiedContentList {...{ tagData, content: posts, startIndex: 0 }} />
-                  <Link href='./page/1' class='p-5 inline-block hover:underline'>Next Page &raquo;</Link>
+                  <UnifiedContentList {...{ tagData, content: posts as IBlogPost[], startIndex: 0 }} />
+                  {pageCount as number > 1?<>
+                    <Link href='./page/1' class='p-5 inline-block hover:underline'>Next Page &raquo;</Link>
+                  </>:<>
+                  </>}
                 </>
               else
                 return <Loading />
@@ -39,11 +43,12 @@ export default component$(() => {
   )
 })
 
-export const onGet: RequestHandler<Array<IBlogPost>> = () => {
-  const postIds = getAllBlogPostIds().slice(0, PAGE_SIZE)
-  return postIds.map((id) => {
+export const onGet: RequestHandler<Array<Array<IBlogPost>|number>> = () => {
+  const allPostIds = getAllBlogPostIds()
+  const postIds = allPostIds.slice(0, PAGE_SIZE)
+  return [postIds.map((id) => {
     return getBlogPostById(id)
-  })
+  }), Math.ceil(allPostIds.length / PAGE_SIZE)]
 }
 
 export const head: DocumentHead = {
