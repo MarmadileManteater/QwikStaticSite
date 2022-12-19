@@ -34,7 +34,8 @@ export default component$(() => {
           <div class='sm:flex'>
             <Image src={portrait} alt='a picture of me' class='w-1/4 mr-auto ml-auto mt-1 mb-4 sm:mb-0 sm:mr-4 sm:w-20 sm:mt-0'  />
             <div>
-              <p class='text-xl md:text-base'>Hello! I'm MarmadileManteater. My real name is Emma, and you can look it up. That's an actual picture of me! <a href='mailto:marmadilemanteater@proton.me' class='inline-block hover:underline text-blue-600 dark:text-red-300'>📭Email me</a></p>
+              <p class='text-xl md:text-base'>Hello! I'm MarmadileManteater. My real name is Emma, and you can look it up. That's an actual picture of me!</p>
+              <p class='text-xl md:text-base md:mt-2 mt-3'><a href='https://matrix.to/#/@marmadilemanteater:matrix.org' class='inline-block hover:underline text-blue-600 dark:text-red-300 pr-3' target='_blank'>🗨Message me</a> | <a href='mailto:marmadilemanteater@proton.me' class='inline-block hover:underline text-blue-600 dark:text-red-300 pl-3'>📭Email me</a></p>
             </div>
           </div>
         </div>
