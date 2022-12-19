@@ -61,8 +61,9 @@ export default component$(() => {
 
 export const onStaticGenerate: StaticGenerateHandler = () => {
   const ids = getAllBlogPostIds()
+  const pages = Array.from({ length: Math.ceil(ids.length / PAGE_SIZE) }, (_, i) => { return { pageNum: i.toString() } })
   return {
-    params: Array.from({ length: Math.ceil(ids.length / PAGE_SIZE) }, (_, i) => { return { pageNum: i.toString() } })
+    params: pages.slice(1, pages.length)
   }
 }
 
