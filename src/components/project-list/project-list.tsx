@@ -1,7 +1,6 @@
 import { component$, useStore, useTask$ } from '@builder.io/qwik'
-import { IProject, IProjectButtonData, ITag } from '../../models/project'
-import ProjectCard from '../project-card/project-card'
-import ProjectButton from '../project-button/project-button'
+import { IProject, ITag } from '../../models/project'
+import UnifiedContentList from '../unified-content-list/unified-content-list'
 
 interface IProps {
     projects: Array<IProject>
@@ -30,22 +29,7 @@ export default component$(({ projects, tagData } : IProps) => {
     <div class='project-list'>
       <a class={`${state.sortType === 'featured'?'decoration-solid underline cursor-default':'cursor-pointer'} select-none p-4 inline-block`} onClick$={() => { state.sortType = 'featured' }}>Sort by featured</a>
       <a class={`${state.sortType === 'lastUpdate'?'decoration-solid underline cursor-default':'cursor-pointer'} select-none p-4 inline-block`} onClick$={() => { state.sortType = 'lastUpdate' }}>Sort by last updated</a>
-      {state.projectsSorted.map((project : IProject, index : number) => {
-        const { title, buttons, summary, thumbnail, tags} = project
-        const titleLink = buttons.at(-1)?.link
-        return <ProjectCard
-          key={`project-card-${index}`}
-          {...{title, titleLink, summary, thumbnail, tags, tagData, index: index }}
-        >
-          {project.buttons.map((entry : IProjectButtonData, buttonIndex : number) => {
-            const { link, target } = entry
-            return <ProjectButton
-              key={`project-button-${index}-${buttonIndex}`}
-              {...{ link, target, index: buttonIndex }}
-            >{entry.prefix} <strong>{entry.locationName}</strong></ProjectButton>
-          })}
-        </ProjectCard>
-      })}
+      <UnifiedContentList {...{ content: state.projectsSorted, tagData, startIndex: 0 }} />
     </div>
   )
 })

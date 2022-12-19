@@ -45,7 +45,7 @@ export default component$(({videoId, server = 'http://localhost:3000', itag = '2
         try {
           let tryServer = store.server
           while (tryServer === store.server) {
-            tryServer = invidiousInstanceList[Math.ceil(invidiousInstanceList.length * Math.random()) - 1]
+            tryServer = invidiousInstanceList[Math.floor(invidiousInstanceList.length * Math.random())]
           }
           store.server = tryServer
           if (isBrowser) {
@@ -80,7 +80,7 @@ export default component$(({videoId, server = 'http://localhost:3000', itag = '2
 
   return (
     <>
-      <video ref={$((video : Element) => { store.video = video as HTMLVideoElement })} loop src={store.videoUrl} >
+      <video ref={$((video : Element) => { store.video = video as HTMLVideoElement })} loop muted src={store.videoUrl} >
         <Slot/>
       </video>
       <a target='_blank' href={store.invidiousUrl} class='hover:underline text-blue text-blue-600 dark:text-red-300 dark:bg-zinc-900 bg-white p-3' >Watch this video on <span class='icon link' >🔗</span><span class='icon'>📺</span>Invidious</a>

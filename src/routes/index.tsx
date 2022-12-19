@@ -8,6 +8,7 @@ import portrait from '../images/portrait.png'
 import favicon from '../images/favicon.ico'
 /* import demon1 from '../images/drink-coffee-hail-satan.png' */
 import demon2 from '../images/sign-2.png'
+import { IProject } from '~/models/project'
 export default component$(() => {
 
   const getProjects = () => {
@@ -50,7 +51,7 @@ export default component$(() => {
         <Image src={demon2} alt="demon holding sign in enochian; the sign translates to 'drinc coffee hail satan'" class='drink-coffee-sign-2' />
       </div>
       <div class='bg-white dark:bg-zinc-900 md:rounded-t-xl'>
-        <ProjectPreview projects={getProjects()} tagData={tags} ></ProjectPreview>
+        <ProjectPreview projects={getProjects() as Array<IProject> } tagData={tags} ></ProjectPreview>
       </div>
     </>
   )

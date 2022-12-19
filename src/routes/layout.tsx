@@ -5,7 +5,7 @@ import InvidiousVideoBackground from '../components/invidious-video-background/i
 export default component$(() => {
   return (
     <>
-      <InvidiousVideoBackground videoId='XvtpXPbbiVA' itag='134' />
+      <InvidiousVideoBackground videoId='XvtpXPbbiVA' itag='136' />
       <Header />
       <main style='width:1000px;max-width:100%;margin-left:auto;margin-right:auto;'>
         <section>

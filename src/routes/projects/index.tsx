@@ -4,11 +4,12 @@ import tags from '../../data/tags.json'
 import projectsData from '../../data/projects.json'
 import ProjectList from '../../components/project-list/project-list'
 import favicon from '../../images/favicon.ico'
+import { IProject } from '~/models/project'
 export default component$(() => {
 
   return (
     <div class='bg-white dark:bg-zinc-900 rounded-t-xl'>
-      <ProjectList projects={projectsData} tagData={tags} ></ProjectList>
+      <ProjectList projects={projectsData as Array<IProject>} tagData={tags} ></ProjectList>
     </div>
   )
 })

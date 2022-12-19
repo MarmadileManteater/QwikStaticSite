@@ -1,5 +1,6 @@
 
 export interface IBlogPost {
+  type: 'IBlogPost',
   id: string,
   html: string
   title: string

@@ -1,5 +1,6 @@
 [
   {
+    "type": "IProject",
     "title": "What Is Hiding In The Dark",
     "tags": ["csharp", "godot", "spooky2djam"],
     "summary": "This is a game about answering the door and keeping yourself occupied.",
@@ -21,6 +22,7 @@
     "lastUpdate": "23 October 2022"
   },
   {
+    "type": "IProject",
     "title": "FreeTubeCordova",
     "tags": ["javascript", "webpack", "cordova", "invidious"],
     "summary": "This is a fork of FreeTube which squashes everything into a web app and exports it to Android via Cordova.",
@@ -42,6 +44,7 @@
     "lastUpdate": "1 November 2022"
   },
   {
+    "type": "IProject",
     "title": "The Very Thirsty Plant & the Labyrinth of Ghosts",
     "tags": ["javascript","tiled","webpack","knockoutjs"],
     "summary": "This is a game about retrieving water for a plant.",
@@ -63,6 +66,7 @@
     "lastUpdate": "28 August 2022"
   },
   {
+    "type": "IProject",
     "title": "InvidiousClientDotNet",
     "tags": ["csharp", "invidious"],
     "summary": "This is a library which allows you to easily interface with the Invidious API using .NET 6.0.",
@@ -84,6 +88,7 @@
     "lastUpdate": "16 August 2022"
   },
   {
+    "type": "IProject",
     "title": "SimpleRemoteKeyboardAndMouse",
     "tags": ["python", "javascript", "pyautogui", "bottle"],
     "summary": "This is a simple remote keyboard and mouse application.",
