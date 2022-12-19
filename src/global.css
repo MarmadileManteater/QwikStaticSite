@@ -43,6 +43,12 @@ body img, body span {
   bottom: -14px;
 }
 
+@media(prefers-color-scheme: dark) {
+  body {
+    background-color: black;
+  }
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
