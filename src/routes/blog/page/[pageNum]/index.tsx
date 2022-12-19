@@ -3,7 +3,6 @@ import { DocumentHead, RequestHandler, useEndpoint, Link, useLocation, StaticGen
 import { IBlogPost } from '~/models/blog'
 import tagData from '../../../../../data/tags.json'
 import favicon from '../../../../images/favicon.ico'
-
 import Loading from '~/components/loading/loading'
 import { getAllBlogPostIds, getBlogPostById } from '~/dataservice/blog-posts'
 import UnifiedContentList from '~/components/unified-content-list/unified-content-list'
@@ -26,7 +25,6 @@ export default component$(() => {
             onPending={() => <Loading />}
             onRejected={(reason) => <div>Error {reason}</div> }
             onResolved={([posts, pageCount]) => {
-              console.log(pageCount)
               if (posts)
                 return <>
                   <UnifiedContentList {...{ tagData, content: posts as IBlogPost[], startIndex: (posts as IBlogPost[]).length % 2 === 0?1:0 }} />

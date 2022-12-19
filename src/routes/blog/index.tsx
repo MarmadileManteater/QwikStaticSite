@@ -52,7 +52,7 @@ export const onGet: RequestHandler<Array<Array<IBlogPost>|number>> = () => {
 }
 
 export const head: DocumentHead = {
-  title: 'MarmadileManteater',
+  title: 'Blog',
   links: [{
     rel: 'icon',
     href: favicon,

@@ -1,4 +1,5 @@
 import { Resource, component$, useStore } from '@builder.io/qwik'
+import { isServer } from '@builder.io/qwik/build'
 import { RequestHandler, DocumentHead, useEndpoint, StaticGenerateHandler } from '@builder.io/qwik-city'
 import { IBlogPost } from '../../../models/blog'
 import Loading from '../../../components/loading/loading'
@@ -40,22 +41,28 @@ export default component$(() => {
   )
 })
 
-export const head: DocumentHead = {
-  title: 'MarmadileManteater',
-  links: [{
-    rel: 'icon',
-    href: favicon,
-    type: 'image/png',
-    sizes: '250x250'
-  }]
+export const head: DocumentHead = ({params}) => {
+  let title = 'Blog'
+  if (isServer) {
+    // only set the title if we are on the server, otherwise the resource will handle this change
+    title = getBlogPostById(params.postId).title
+  }
+  return {
+    title,
+    links: [{
+      rel: 'icon',
+      href: favicon,
+      type: 'image/png',
+      sizes: '250x250'
+    }]
+  }
 }
-
 export const onStaticGenerate: StaticGenerateHandler = () => {
   const ids = getAllBlogPostIds()
   return {
     params: ids.map((id) => {
       return { postId: id }
-    }),
+    })
   }
 }
 
