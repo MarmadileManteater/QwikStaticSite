@@ -65,5 +65,15 @@ export const head: DocumentHead = {
     href: favicon,
     type: 'image/png',
     sizes: '250x250'
-  }]
+  }],
+  meta: [
+    {
+      name: 'author',
+      content: 'Emma (MarmadileManteater)'
+    },
+    {
+      name: 'description',
+      content: 'Hello! I\'m MarmadileManteater. My real name is Emma, and you can look it up. This is actually my website!'
+    }
+  ]
 }

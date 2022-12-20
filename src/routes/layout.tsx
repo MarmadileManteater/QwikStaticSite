@@ -1,7 +1,7 @@
 import { component$, Slot, useStyles$ } from '@builder.io/qwik'
 import Header from '../components/header/header'
 import InvidiousVideoBackground from '../components/invidious-video-background/invidious-video-background'
-import highlightjs from 'highlight.js/styles/stackoverflow-dark.css?inline'
+import highlightjs from 'highlight.js/styles/stackoverflow-dark.css?inline'
 
 export default component$(() => {
   useStyles$(highlightjs)
