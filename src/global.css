@@ -49,6 +49,14 @@ body img, body span {
   }
 }
 
+pre > div {
+  margin-bottom: -30px;
+  background-color: black;
+  color: white;
+  padding: 15px 10px;
+  white-space: break-spaces;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

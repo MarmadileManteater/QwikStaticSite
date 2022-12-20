@@ -2,12 +2,13 @@ import { IBlogPost } from '../models/blog'
 import fs from 'fs'
 import child_process from 'child_process'
 import { DOMParser, XMLSerializer } from '@xmldom/xmldom'
-
+import hljs from 'highlight.js'
 export function getAllBlogPostIds() : string[] {
   const { readdirSync } = fs
   return readdirSync('./data/posts')
     .filter((post) => post.endsWith('.html'))
     .map((post) => post.substring(0, post.length - 5))
+    .reverse()
 }
 
 export function getBlogPostById(postId: string) : IBlogPost {
@@ -44,6 +45,14 @@ export function getBlogPostById(postId: string) : IBlogPost {
   const tags = Array.from(tagElements?tagElements:[]).map((tag) => tag.textContent)
   postMarkup.removeChild(tagsElement as Node)
   // Return a well-formatted object
+  Array.from(postMarkup.getElementsByTagName('code')).map((element) => {
+    const htmlFormattedCode = hljs.highlightAuto(element.textContent as string).value
+    const newElement = parser.parseFromString(`<div><div>${htmlFormattedCode}</div></div>`).firstChild?.childNodes[0]
+    if (newElement && element.parentNode) {
+      element.parentNode.insertBefore(newElement, element)
+      element.parentNode.removeChild(element)
+    }
+  })
   return {
     id: postId,
     html: new XMLSerializer().serializeToString(postMarkup),
