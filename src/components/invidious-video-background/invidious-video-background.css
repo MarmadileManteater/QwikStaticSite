@@ -10,6 +10,8 @@ video[data-active="true"] + a {
   bottom: 0px;
   right: 0px;
   border-radius: 5px 0 0 0;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
 }
 
 video[data-active="true"] + a span.link { 
@@ -24,6 +26,10 @@ video[data-active="true"] + a span.link {
     bottom: auto;
     border-radius: 0 0 5px 0;
     position: absolute;
+    border-top: 0;
+    border-left: 0;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
   }
 }
 
