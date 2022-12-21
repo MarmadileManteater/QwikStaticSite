@@ -4,7 +4,7 @@ import child_process from 'child_process'
 import { DOMParser, XMLSerializer } from '@xmldom/xmldom'
 import hljs from 'highlight.js'
 
-const SITE_URL = 'http://localhost:5173'
+const SITE_URL = 'https://marmadilemanteater.pythonanywhere.com'
 
 export function getAllBlogPostIds() : string[] {
   const { readdirSync } = fs
