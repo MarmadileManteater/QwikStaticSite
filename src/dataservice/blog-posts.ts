@@ -81,10 +81,10 @@ export function getBlogRSSFeed(posts : IBlogPost[]) : string {
   ${posts.map((post) => {
     const date = new Date(post.gittime)
     return `<item>
-    <title>${post.title}</title>
+    <title>${post.title.replace(/&/g, '&amp;')}</title>
     <link>${SITE_URL}/blog/${post.id}</link>
     <guid>${SITE_URL}/blog/${post.id}</guid>
-    <description>${post.shortDescription}</description>
+    <description>${post.shortDescription.replace(/&/g, '&amp;').replace(/'/g, '&apos;')}</description>
     <pubDate>${date.toUTCString()}</pubDate>
     <content:encoded><![CDATA[${post.html}]]></content:encoded>
   </item>`
