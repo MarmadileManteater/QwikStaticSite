@@ -23,6 +23,7 @@ jobs:
       - name: 🏗 Build my ⚡Qwik fork
         run: |
           cd qwik
+          npm i wasm-pack
           pnpm install
           pnpm build.full
 
