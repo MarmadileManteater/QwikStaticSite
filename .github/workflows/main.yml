@@ -1,5 +1,4 @@
-c
-name: 
+name: Build
 
 on:
   push:
