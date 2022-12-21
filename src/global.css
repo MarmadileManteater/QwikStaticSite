@@ -55,6 +55,7 @@ pre > div {
   color: white;
   padding: 15px 10px;
   white-space: break-spaces;
+  word-wrap: break-word;
 }
 
 @tailwind base;
