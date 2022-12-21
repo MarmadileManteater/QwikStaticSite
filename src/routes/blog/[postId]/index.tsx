@@ -17,13 +17,13 @@ export default component$(() => {
   })
   return (
     <>
-      <div class='bg-white dark:bg-zinc-900 md:rounded-t-xl' >
+      <div class='bg-white dark:bg-zinc-900 md:rounded-t-xl lg:border lg:border-solid lg:border-black' >
         <Resource
           value={store.endpoint}
           onPending={() => <Loading />}
           onRejected={(reason) => <div>Error {reason}</div> }
           onResolved={(post) => {
-            if (post)
+            if (post) {
               return <>
                 <div class='p-8'>
                   <h2 class='text-4xl'>{post.title}</h2>
@@ -32,7 +32,7 @@ export default component$(() => {
                   <div dangerouslySetInnerHTML={post.html}></div>
                 </div>
               </>
-            else
+            } else
               return <Loading />
           }}
         />
@@ -43,9 +43,12 @@ export default component$(() => {
 
 export const head: DocumentHead = ({params}) => {
   let title = 'Blog'
+  let description = ''
   if (isServer) {
     // only set the title if we are on the server, otherwise the resource will handle this change
-    title = getBlogPostById(params.postId).title
+    const post = getBlogPostById(params.postId)
+    title = post.title
+    description = post.shortDescription
   }
   return {
     title,
@@ -54,7 +57,17 @@ export const head: DocumentHead = ({params}) => {
       href: favicon,
       type: 'image/png',
       sizes: '250x250'
-    }]
+    }],
+    meta: [
+      {
+        name: 'author',
+        content: 'Emma (MarmadileManteater)'
+      },
+      {
+        name: 'description',
+        content: description
+      }
+    ]
   }
 }
 export const onStaticGenerate: StaticGenerateHandler = () => {

@@ -18,7 +18,7 @@ export default component$(() => {
 
   return (
     <>
-      <div class='project-list rounded-t-xl' style='overflow:hidden;'>
+      <div class='project-list rounded-t-xl lg:border lg:border-solid lg:border-black' style='overflow:hidden;'>
         <div class='bg-white dark:bg-zinc-900 md:rounded-t-xl'>
           <Resource
             value={store.endpoint}

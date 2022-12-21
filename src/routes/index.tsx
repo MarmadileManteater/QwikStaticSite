@@ -30,7 +30,7 @@ export default component$(() => {
   return (
     <>      
       <div class='md:flex' style='justify-content: center; position: relative'>
-        <div class='bg-white dark:bg-zinc-900 rounded-t-xl md:rounded-xl md:mb-3 p-5 mr-3 md:w-1/2 w-full'>
+        <div class='bg-white dark:bg-zinc-900 rounded-t-xl md:rounded-xl md:mb-3 p-5 mr-3 md:w-1/2 w-full md:border md:border-solid md:border-black'>
           <div class='sm:flex'>
             <Image src={portrait} alt='a picture of me' class='w-1/4 mr-auto ml-auto mt-1 mb-4 sm:mb-0 sm:mr-4 sm:w-20 sm:mt-0'  />
             <div>
@@ -39,7 +39,7 @@ export default component$(() => {
             </div>
           </div>
         </div>
-        <div class='bg-zinc-100 md:rounded-xl dark:bg-zinc-800 md:bg-white md:dark:bg-zinc-900 md:mb-3 p-5 md:w-1/4 w-full'>
+        <div class='bg-zinc-100 md:rounded-xl dark:bg-zinc-800 md:bg-white md:dark:bg-zinc-900 md:mb-3 p-5 md:w-1/4 w-full md:border md:border-solid md:border-black'>
           <ul>
             <li><a href='https://github.com/MarmadileManteater/' target='_blank' class='md:text-base text-xl pr-4 mr-4 block hover:underline hover:bg-zinc-200 hover:dark:bg-zinc-700 text-blue-600 dark:text-red-300 pb-2 pt-2 md:p-0'>👩‍💻 GitHub</a></li>
             <li><a href='https://marmadilemanteater.itch.io/' target='_blank' class='md:text-base text-xl pr-4 mr-4 block hover:underline hover:bg-zinc-200 hover:dark:bg-zinc-700 text-blue-600 dark:text-red-300 pb-2 pt-2 md:p-0'>🕹 itch.io</a></li>
@@ -51,7 +51,7 @@ export default component$(() => {
         {/*<Image src={demon1} alt="demon holding sign with misspelling; please be patient with the little demon; he's trying" class='drink-coffee-sign' />*/}
         <Image src={demon2} alt="demon holding sign in enochian; the sign translates to 'drinc coffee hail satan'" class='drink-coffee-sign-2' />
       </div>
-      <div class='bg-white dark:bg-zinc-900 md:rounded-t-xl'>
+      <div class='bg-white dark:bg-zinc-900 md:rounded-t-xl md:border md:border-solid md:border-black'>
         <ProjectPreview projects={getProjects() as Array<IProject>} tagData={tags} ></ProjectPreview>
       </div>
     </>
