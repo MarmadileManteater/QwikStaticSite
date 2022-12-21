@@ -13,6 +13,7 @@ jobs:
         uses: actions/checkout@master
         with:
           persist-credentials: false
+          submodules: recursive
           
       - name: Setup pnpm
         uses: pnpm/action-setup@v2.2.4
