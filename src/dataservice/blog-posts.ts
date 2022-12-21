@@ -49,7 +49,7 @@ export function getBlogPostById(postId: string) : IBlogPost {
   postMarkup.removeChild(tagsElement as Node)
   // Return a well-formatted object
   Array.from(postMarkup.getElementsByTagName('code')).map((element) => {
-    const htmlFormattedCode = hljs.highlightAuto(element.textContent as string).value
+    const htmlFormattedCode = hljs.highlightAuto(element.textContent as string, ['javascript', 'html']).value
     const newElement = parser.parseFromString(`<div><div>${htmlFormattedCode}</div></div>`).firstChild?.childNodes[0]
     if (newElement && element.parentNode) {
       element.parentNode.insertBefore(newElement, element)
