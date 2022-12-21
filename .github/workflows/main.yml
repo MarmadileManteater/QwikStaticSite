@@ -20,10 +20,15 @@ jobs:
         with:
           version: 7.14.2
 
+      - name: Setup wasm-pack
+        uses: jetli/wasm-pack-action@v0.4.0
+        with:
+          # Optional version of wasm-pack to install(eg. 'v0.9.1', 'latest')
+          version: 'latest'
+
       - name: 🏗 Build my ⚡Qwik fork
         run: |
           cd qwik
-          npm i wasm-pack
           pnpm install
           pnpm build.full
 
