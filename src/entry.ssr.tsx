@@ -12,9 +12,16 @@
  */
 import { renderToStream, RenderToStreamOptions } from '@builder.io/qwik/server'
 import { manifest } from '@qwik-client-manifest'
+import { getAllBlogPostIds, getBlogPostById, getBlogRSSFeed } from './dataservice/blog-posts'
 import Root from './root'
+import fs from 'fs'
 
 export default function (opts: RenderToStreamOptions) {
+  // hacky, but it works 🤷‍♀️
+  const ids = getAllBlogPostIds()
+  const posts = ids.map(id => getBlogPostById(id))
+  fs.writeFileSync('./dist/blog/rss.xml', getBlogRSSFeed(posts))
+  
   return renderToStream(<Root />, {
     manifest,
     ...opts,

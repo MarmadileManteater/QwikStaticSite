@@ -37,7 +37,7 @@ export default component$(({content, tagData, startIndex = 1} : IProps) => {
         const post = contentItem as IBlogPost
         return <>
           <ContentCard {...{ title: post.title, titleLink: `/blog/${post.id}`, summary: post.shortDescription, tags: post.tags, index: i + startIndex, tagData }} >
-            <p class='pb-2 text-zinc-500 dark:text-zinc-400'><em>Last updated {new Date(post.gittime).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZone: 'GMT' })} UTC</em></p>
+            <p class='pb-2 text-zinc-500 dark:text-zinc-400'><em>Last updated {new Date(post.gittime).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZone: 'GMT' })} GMT</em></p>
           </ContentCard>
         </>
       default:

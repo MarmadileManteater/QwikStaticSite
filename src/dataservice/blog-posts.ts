@@ -3,6 +3,9 @@ import fs from 'fs'
 import child_process from 'child_process'
 import { DOMParser, XMLSerializer } from '@xmldom/xmldom'
 import hljs from 'highlight.js'
+
+const SITE_URL = 'http://localhost:5173'
+
 export function getAllBlogPostIds() : string[] {
   const { readdirSync } = fs
   return readdirSync('./data/posts')
@@ -65,4 +68,27 @@ export function getBlogPostById(postId: string) : IBlogPost {
     gittime: gitDate,
     type: 'IBlogPost'
   } as IBlogPost
+}
+
+export function getBlogRSSFeed(posts : IBlogPost[]) : string {
+  return `<?xml version="1.0" encoding="UTF-8"?>
+  <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+      <title>Emma&apos;s Blog!</title>
+      <description>my blog; 🤷‍♀️i guess</description>
+      <link>${SITE_URL}/blog/</link>
+      <language>en-us</language>
+  ${posts.map((post) => {
+    const date = new Date(post.gittime)
+    return `<item>
+    <title>${post.title}</title>
+    <link>${SITE_URL}/blog/${post.id}</link>
+    <guid>${SITE_URL}/blog/${post.id}</guid>
+    <description>${post.shortDescription}</description>
+    <pubDate>${date.toUTCString()}</pubDate>
+    <content:encoded><![CDATA[${post.html}]]></content:encoded>
+  </item>`
+  }).join('\n')}
+    </channel>
+  </rss>`
 }

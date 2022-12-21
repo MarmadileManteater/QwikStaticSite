@@ -27,6 +27,7 @@ export default component$(() => {
             onResolved={([posts, pageCount]) => {
               if (posts)
                 return <>
+                  <a download='my-blog.xml' href='/blog/rss.xml' class='hover:underline p-2 block'>📰rss</a>
                   <UnifiedContentList {...{ tagData, content: posts as IBlogPost[], startIndex: 0 }} />
                   {pageCount as number > 1?<>
                     <Link href='./page/1' class='p-5 inline-block hover:underline'>Next Page &raquo;</Link>

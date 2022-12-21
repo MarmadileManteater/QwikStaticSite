@@ -28,7 +28,7 @@ export default component$(() => {
                 <div class='p-8'>
                   <h2 class='text-4xl'>{post.title}</h2>
                   <TagList {...{tags: post.tags, tagData }} />
-                  <p class='pb-2 text-zinc-500 dark:text-zinc-400'><em>Last updated {new Date(post.gittime).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZone: 'GMT' })} UTC</em></p>
+                  <p class='pb-2 text-zinc-500 dark:text-zinc-400'><em>Last updated {new Date(post.gittime).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZone: 'GMT' })} GMT</em></p>
                   <div dangerouslySetInnerHTML={post.html}></div>
                 </div>
               </>
