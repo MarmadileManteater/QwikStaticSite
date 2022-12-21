@@ -18,6 +18,11 @@ import fs from 'fs'
 
 export default function (opts: RenderToStreamOptions) {
   // hacky, but it works 🤷‍♀️
+  try {
+    fs.mkdirSync('./dist/blog')
+  } catch (error){
+    console.warn(error)
+  }
   const ids = getAllBlogPostIds()
   const posts = ids.map(id => getBlogPostById(id))
   fs.writeFileSync('./dist/blog/rss.xml', getBlogRSSFeed(posts))
