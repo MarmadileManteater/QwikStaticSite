@@ -4,7 +4,7 @@ import { IBlogPost } from '~/models/blog'
 import tagData from '../../../data/tags.json'
 import favicon from '../../images/favicon.ico'
 import Loading from '~/components/loading/loading'
-import { getAllBlogPostIds, getBlogPostById } from '~/dataservice/blog-posts'
+import { getAllBlogPostsSorted } from '~/dataservice/blog-posts'
 import UnifiedContentList from '~/components/unified-content-list/unified-content-list'
 /* import demon1 from '../images/drink-coffee-hail-satan.png' */
 
@@ -44,11 +44,8 @@ export default component$(() => {
 })
 
 export const onGet: RequestHandler<Array<Array<IBlogPost>|number>> = () => {
-  const allPostIds = getAllBlogPostIds()
-  const postIds = allPostIds.slice(0, PAGE_SIZE)
-  return [postIds.map((id) => {
-    return getBlogPostById(id)
-  }), Math.ceil(allPostIds.length / PAGE_SIZE)]
+  const allPosts = getAllBlogPostsSorted()
+  return [allPosts.slice(0, PAGE_SIZE), Math.ceil(allPosts.length / PAGE_SIZE)]
 }
 
 export const head: DocumentHead = {

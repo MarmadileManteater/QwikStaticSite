@@ -6,6 +6,14 @@ import hljs from 'highlight.js'
 
 const SITE_URL = 'https://marmadilemanteater.pythonanywhere.com'
 
+export function getAllBlogPostsSorted() : IBlogPost[] {
+  const ids = getAllBlogPostIds()
+  const posts = ids.map((id) => getBlogPostById(id))
+  return posts.sort((a, b) => {
+    return b.gittime - a.gittime
+  })
+}
+
 export function getAllBlogPostIds() : string[] {
   const { readdirSync } = fs
   return readdirSync('./data/posts')

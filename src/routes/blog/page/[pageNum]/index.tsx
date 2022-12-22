@@ -4,7 +4,7 @@ import { IBlogPost } from '~/models/blog'
 import tagData from '../../../../../data/tags.json'
 import favicon from '../../../../images/favicon.ico'
 import Loading from '~/components/loading/loading'
-import { getAllBlogPostIds, getBlogPostById } from '~/dataservice/blog-posts'
+import { getAllBlogPostIds, getAllBlogPostsSorted } from '~/dataservice/blog-posts'
 import UnifiedContentList from '~/components/unified-content-list/unified-content-list'
 import { PAGE_SIZE } from '../..'
 /* import demon1 from '../images/drink-coffee-hail-satan.png' */
@@ -68,11 +68,9 @@ export const onStaticGenerate: StaticGenerateHandler = () => {
 
 export const onGet: RequestHandler<Array<Array<IBlogPost>|number>> = (ev) => {
   const pageNum = parseInt(ev.params.pageNum)
-  const allPostIds = getAllBlogPostIds()
-  const postIds = allPostIds.slice(PAGE_SIZE * pageNum, PAGE_SIZE * (pageNum + 1))
-  return [postIds.map((id) => {
-    return getBlogPostById(id)
-  }), allPostIds.length / PAGE_SIZE]
+  const allPosts = getAllBlogPostsSorted()
+  const posts = allPosts.slice(PAGE_SIZE * pageNum, PAGE_SIZE * (pageNum + 1))
+  return [posts, allPosts.length / PAGE_SIZE]
 }
 
 export const head: DocumentHead = {
