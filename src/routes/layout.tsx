@@ -5,6 +5,7 @@ import highlightjs from 'highlight.js/styles/vs2015.css?inline'
 
 export default component$(() => {
   useStyles$(highlightjs)
+
   return (
     <>
       <InvidiousVideoBackground videoId='XvtpXPbbiVA' itag='136' />

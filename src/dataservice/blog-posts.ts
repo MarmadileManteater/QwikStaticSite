@@ -11,7 +11,6 @@ export function getAllBlogPostIds() : string[] {
   return readdirSync('./data/posts')
     .filter((post) => post.endsWith('.html'))
     .map((post) => post.substring(0, post.length - 5))
-    .reverse()
 }
 
 export function getBlogPostById(postId: string) : IBlogPost {

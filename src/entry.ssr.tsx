@@ -20,12 +20,12 @@ export default function (opts: RenderToStreamOptions) {
   // hacky, but it works 🤷‍♀️
   try {
     fs.mkdirSync('./dist/blog')
+    const ids = getAllBlogPostIds()
+    const posts = ids.map(id => getBlogPostById(id))
+    fs.writeFileSync('./dist/blog/rss.xml', getBlogRSSFeed(posts))
   } catch (error){
-    console.warn(error)
+    //console.warn(error)
   }
-  const ids = getAllBlogPostIds()
-  const posts = ids.map(id => getBlogPostById(id))
-  fs.writeFileSync('./dist/blog/rss.xml', getBlogRSSFeed(posts))
   
   return renderToStream(<Root />, {
     manifest,

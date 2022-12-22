@@ -8,8 +8,6 @@ import favicon from '../../../images/favicon.ico'
 import tagData from '../../../../data/tags.json'
 import { getAllBlogPostIds, getBlogPostById } from '~/dataservice/blog-posts'
 
-
-
 export default component$(() => {
   const store = useStore({
     post: {} as IBlogPost,
@@ -70,6 +68,7 @@ export const head: DocumentHead = ({params}) => {
     ]
   }
 }
+
 export const onStaticGenerate: StaticGenerateHandler = () => {
   const ids = getAllBlogPostIds()
   return {
