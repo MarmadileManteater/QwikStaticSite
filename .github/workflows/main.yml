@@ -16,6 +16,12 @@ jobs:
           persist-credentials: false
           submodules: recursive
           
+      - name: Reclone the data submodule to get the proper history
+        run: |
+          #hacky af, but submodules in gh don't retrieve history correctly
+          rm data -rf
+          git clone https://github.com/MarmadileManteater/gh-pages-site-data.git data
+
       - name: Setup pnpm
         uses: pnpm/action-setup@v2.2.4
         with:
@@ -38,11 +44,13 @@ jobs:
 
       - name: 🏗️ Build 
         run: |
-          #hack af, but submodules in gh don't retrieve history correctly
-          rm data -rf
-          git clone https://github.com/MarmadileManteater/gh-pages-site-data.git data
           yarn build
 
+      - name: 📰 Output RSS feed
+        run: |
+          npx ts-node ./src/scripts/write-xml-feed.ts
+          mv ./rss.xml ./dist/blog/
+      
       - name: 📦 Publish artifact
         uses: actions/upload-artifact@v3
         with:
