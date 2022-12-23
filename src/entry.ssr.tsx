@@ -22,7 +22,7 @@ export default function (opts: RenderToStreamOptions) {
     fs.mkdirSync('./dist/blog')
     fs.writeFileSync('./dist/blog/rss.xml', getBlogRSSFeed(getAllBlogPostsSorted()))
   } catch (error){
-    console.warn(error)
+    console.error(error)
   }
   
   return renderToStream(<Root />, {
