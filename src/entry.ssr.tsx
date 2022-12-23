@@ -24,7 +24,7 @@ export default function (opts: RenderToStreamOptions) {
     const posts = ids.map(id => getBlogPostById(id))
     fs.writeFileSync('./dist/blog/rss.xml', getBlogRSSFeed(posts))
   } catch (error){
-    //console.warn(error)
+    console.warn(error)
   }
   
   return renderToStream(<Root />, {
