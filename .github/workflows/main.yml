@@ -38,6 +38,9 @@ jobs:
 
       - name: 🏗️ Build 
         run: |
+          #hack af, but submodules in gh don't retrieve history correctly
+          rm data -rf
+          git clone https://github.com/MarmadileManteater/gh-pages-site-data.git data
           yarn build
 
       - name: 📦 Publish artifact
