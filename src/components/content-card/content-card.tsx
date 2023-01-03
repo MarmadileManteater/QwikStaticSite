@@ -4,6 +4,7 @@ import { ITag } from '../../models/project'
 import styles from './content-card.css?inline'
 import Image from '../image/image'
 import TagList from '../tag-list/tag-list'
+import { convertEmojiToImages } from '~/helpers/emoji'
 
 interface IProps {
     title: string
@@ -27,8 +28,8 @@ export default component$(({ title, titleLink, summary, thumbnail, tags, tagData
       <div class='p-4 pl-4'>
         <TagList {...{ tags, tagData }} />
         
-        <Link href={titleLink} class='hover:underline'><h2 class={`font-bold text-2xl mb-4 ${title.search(' ') === -1?'break-all':'break-words'}`}>{title}</h2></Link>
-        <p class='mb-3'>{summary}</p>
+        <Link href={titleLink} class='hover:underline'><h2 class={`font-bold text-2xl mb-4 ${title.search(' ') === -1?'break-all':'break-words'}`} dangerouslySetInnerHTML={convertEmojiToImages(title)}></h2></Link>
+        <p class='mb-3' dangerouslySetInnerHTML={convertEmojiToImages(summary as string)}></p>
         <Slot />
       </div>
     </div>

@@ -3,8 +3,9 @@ import fs from 'fs'
 import child_process from 'child_process'
 import { DOMParser, XMLSerializer } from '@xmldom/xmldom'
 import hljs from 'highlight.js'
-
+import { convertEmojiToImages } from '~/helpers/emoji'
 const SITE_URL = 'https://marmadilemanteater.pythonanywhere.com'
+
 
 export function getAllBlogPostsSorted() : IBlogPost[] {
   const ids = getAllBlogPostIds()
@@ -63,9 +64,10 @@ export function getBlogPostById(postId: string) : IBlogPost {
       element.parentNode.removeChild(element)
     }
   })
+  const html = new XMLSerializer().serializeToString(postMarkup)
   return {
     id: postId,
-    html: new XMLSerializer().serializeToString(postMarkup),
+    html,
     title,
     shortDescription,
     tags,

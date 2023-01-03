@@ -7,6 +7,7 @@ import TagList from '../../../components/tag-list/tag-list'
 import favicon from '../../../images/favicon.ico'
 import tagData from '../../../../data/tags.json'
 import { getAllBlogPostIds, getBlogPostById } from '~/dataservice/blog-posts'
+import { convertEmojiToImages } from '~/helpers/emoji'
 
 export default component$(() => {
   const store = useStore({
@@ -24,10 +25,10 @@ export default component$(() => {
             if (post) {
               return <>
                 <div class='p-8'>
-                  <h2 class='text-4xl'>{post.title}</h2>
+                  <h2 class='text-4xl pb-2' dangerouslySetInnerHTML={convertEmojiToImages(post.title as string)}></h2>
                   <TagList {...{tags: post.tags, tagData }} />
                   <p class='pb-2 text-zinc-500 dark:text-zinc-400'><em>Last updated {new Date(post.gittime).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZone: 'GMT' })} GMT</em></p>
-                  <div dangerouslySetInnerHTML={post.html}></div>
+                  <div dangerouslySetInnerHTML={convertEmojiToImages(post.html as string)}></div>
                 </div>
               </>
             } else

@@ -29,7 +29,7 @@ export default component$(({content, tagData, startIndex = 1} : IProps) => {
               return <ProjectButton
                 key={`project-button-${i + startIndex}-${buttonIndex}`}
                 {...{ link, target, index: buttonIndex }}
-              >{entry.prefix} <strong>{entry.locationName}</strong></ProjectButton>
+              >{entry.prefix} <strong>{entry.locationName === 'GitHub'?<><i style='margin-left: -0.05em' class='oma oma-bg oma-github'></i></>:<></>}{entry.locationName}</strong></ProjectButton>
             })}
           </ContentCard>
         </>

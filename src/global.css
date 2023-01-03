@@ -58,6 +58,37 @@ pre > div {
   word-wrap: break-word;
 }
 
+.oma-bg {
+  vertical-align: -0.4em !important;
+}
+
+.emoji {
+  margin-left: -0.3em;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.emoji > img {
+  top: 20px;
+  width: 2em;
+  height: 2em;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: -39px;
+  right: -0.15em;
+  position: relative;
+  line-height: 1.75em;
+}
+
+h3 .emoji, h2 .emoji, h1 .emoji {
+  margin-left: -0.5em;
+}
+
+h2 .emoji > img, h2 .emoji > img {
+  top: 15px;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
