@@ -18,7 +18,7 @@ export function emojiToOtherMoji (givenEmoji : string) : string {
       return unicode === mtntIcon.code.map((code : number) => code.toString(16)).join('-').toLowerCase()
     }
   })
-  console.log(mtntIcons)
+  
   if (mtntIcons.length > 0)
     return `https://cdn.bears.town/mutant-std/emoji-build/${mtntIcons[0].short}.svg`
   else {
