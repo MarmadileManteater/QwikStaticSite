@@ -1,7 +1,8 @@
 
 // @ts-ignore
 import emojiUnicode from 'emoji-unicode'
-
+import mtntMap from '../../data/maps/mtnt_2022.12_data.json'
+import backupMap from '../../data/maps/backup_mtnt.json'
 export function emojiToOtherMoji (givenEmoji : string) : string {
   let unicode = emojiUnicode(givenEmoji).toLowerCase().replaceAll(' ', '-')
   switch (unicode) {
@@ -12,7 +13,23 @@ export function emojiToOtherMoji (givenEmoji : string) : string {
   default:
     break
   }
-  return `https://twemoji.maxcdn.com/v/14.0.2/72x72/${unicode}.png`
+  const mtntIcons = mtntMap.filter((mtntIcon) => {
+    if (Array.isArray(mtntIcon.code)) {
+      return unicode === mtntIcon.code.map((code : number) => code.toString(16)).join('-').toLowerCase()
+    }
+  })
+  console.log(mtntIcons)
+  if (mtntIcons.length > 0)
+    return `https://cdn.bears.town/mutant-std/emoji-build/${mtntIcons[0].short}.svg`
+  else {
+    const backupIcons = backupMap.filter(({emoji}) => {
+      return emoji === givenEmoji
+    })
+    if (backupIcons.length > 0)
+      return `https://cdn.bears.town/mutant-std/emoji-build/${backupIcons[0].short}.svg`
+    else
+      return `https://twemoji.maxcdn.com/v/14.0.2/72x72/${unicode}.png`
+  }
 }
 
 export function convertEmojiToImages(html : string) : string {
