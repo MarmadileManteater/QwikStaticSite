@@ -22,8 +22,8 @@ export function emojiToOtherMoji (givenEmoji : string) : string {
   if (mtntIcons.length > 0)
     return `https://cdn.bears.town/mutant-std/emoji-build/${mtntIcons[0].short}.svg`
   else {
-    const backupIcons = backupMap.filter(({emoji}) => {
-      return emoji === givenEmoji
+    const backupIcons = backupMap.filter((backupItem) => {
+      return backupItem.emoji === givenEmoji || backupItem.unicode == unicode
     })
     if (backupIcons.length > 0)
       return `https://cdn.bears.town/mutant-std/emoji-build/${backupIcons[0].short}.svg`
