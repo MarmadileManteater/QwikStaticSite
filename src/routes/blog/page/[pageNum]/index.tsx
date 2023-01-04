@@ -19,40 +19,38 @@ export default component$(() => {
   const nextPage = `../${pageNum + 1}`
   return (
     <>
-      <div class='project-list rounded-t-xl lg:border lg:border-solid lg:border-black' style='overflow:hidden;'>
-        <div class='bg-white dark:bg-zinc-900 md:rounded-t-xl'>
-          <Resource
-            value={store.endpoint}
-            onPending={() => <Loading />}
-            onRejected={(reason) => <div>Error {reason}</div> }
-            onResolved={([posts, pageCount]) => {
-              if (posts)
-                return <>
-                  <UnifiedContentList {...{ tagData, content: posts as IBlogPost[], startIndex: (posts as IBlogPost[]).length % 2 === 0?1:0 }} />
-                  <div>
-                    <Link href={previousPage} class='p-5 inline-block hover:underline'>Previous Page &raquo;</Link>
-                    {(Array.from({ length: Math.ceil(pageCount as number) }, (_, i) => i)).slice(pageNum - 2 > 0?pageNum - 2:0, pageNum + 3).map((page) => {
-                      if (page === pageNum) {
-                        return <>
-                          <strong class='text-xl p-5'>{page + 1}</strong>
-                        </>
-                      } else {
-                        return <>
-                          <Link href={page > 0?`../${page}`:'../../'} class='p-5 hover:underline' >{page + 1}</Link>
-                        </>
-                      }
-                    })}
-                    {pageCount > pageNum + 1?<>
-                      <Link href={nextPage} class='p-5 inline-block hover:underline'>Next Page &raquo;</Link>
-                    </>:<></>}
-                  </div>
-                </>
-              else
-                return <Loading />
-            }}
-          />
-          
-        </div>
+      <div style='flex: 1; display: flex; flex-direction: column;'>
+        <Resource
+          value={store.endpoint}
+          onPending={() => <Loading />}
+          onRejected={(reason) => <div>Error {reason}</div> }
+          onResolved={([posts, pageCount]) => {
+            if (posts)
+              return <div class='project-list rounded-t-xl border-t lg:border border-solid border-black bg-white dark:bg-zinc-900 md:rounded-t-xl flex-1 md:flex-initial' style='overflow:hidden; display: flex; flex-direction: column;'>
+                <UnifiedContentList {...{ tagData, content: posts as IBlogPost[], startIndex: (posts as IBlogPost[]).length % 2 === 0?1:0 }} />
+                <div>
+                  <Link href={previousPage} class='p-5 inline-block hover:underline'>Previous Page &raquo;</Link>
+                  {(Array.from({ length: Math.ceil(pageCount as number) }, (_, i) => i)).slice(pageNum - 2 > 0?pageNum - 2:0, pageNum + 3).map((page) => {
+                    if (page === pageNum) {
+                      return <>
+                        <strong class='text-xl p-5'>{page + 1}</strong>
+                      </>
+                    } else {
+                      return <>
+                        <Link href={page > 0?`../${page}`:'../../'} class='p-5 hover:underline' >{page + 1}</Link>
+                      </>
+                    }
+                  })}
+                  {pageCount > pageNum + 1?<>
+                    <Link href={nextPage} class='p-5 inline-block hover:underline'>Next Page &raquo;</Link>
+                  </>:<></>}
+                </div>
+              </div>
+            else
+              return <Loading />
+          }}
+        />
+        
       </div>
     </>
   )

@@ -16,7 +16,7 @@ export default component$(() => {
   })
   return (
     <>
-      <div class='bg-white dark:bg-zinc-900 md:rounded-t-xl lg:border lg:border-solid lg:border-black' >
+      <div >
         <Resource
           value={store.endpoint}
           onPending={() => <Loading />}
@@ -24,11 +24,13 @@ export default component$(() => {
           onResolved={(post) => {
             if (post) {
               return <>
-                <div class='p-8'>
-                  <h2 class='text-4xl pb-2' dangerouslySetInnerHTML={convertEmojiToImages(post.title as string)}></h2>
-                  <TagList {...{tags: post.tags, tagData }} />
-                  <p class='pb-2 text-zinc-500 dark:text-zinc-400'><em>Last updated {new Date(post.gittime).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZone: 'GMT' })} GMT</em></p>
-                  <div dangerouslySetInnerHTML={convertEmojiToImages(post.html as string)}></div>
+                <div class='bg-white border-t dark:bg-zinc-900 rounded-t-xl lg:border border-solid border-black'>
+                  <div class='p-6 pb-2'>
+                    <h2 class='text-4xl pb-2' dangerouslySetInnerHTML={convertEmojiToImages(post.title as string)}></h2>
+                    <TagList {...{tags: post.tags, tagData }} />
+                    <p class='pb-2 text-zinc-500 dark:text-zinc-400'><em>Last updated {new Date(post.gittime).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZone: 'GMT' })} GMT</em></p>
+                    <div dangerouslySetInnerHTML={convertEmojiToImages(post.html as string)}></div>
+                  </div>
                 </div>
               </>
             } else

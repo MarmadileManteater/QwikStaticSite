@@ -8,7 +8,7 @@ import { IProject } from '~/models/project'
 export default component$(() => {
 
   return (
-    <div class='bg-white dark:bg-zinc-900 rounded-t-xl lg:border lg:border-solid lg:border-black'>
+    <div class='bg-white dark:bg-zinc-900 rounded-t-xl border-t lg:border border-solid border-black'>
       <ProjectList projects={projectsData as Array<IProject>} tagData={tags} ></ProjectList>
     </div>
   )

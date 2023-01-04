@@ -18,22 +18,22 @@ export default component$(() => {
 
   return (
     <>
-      <div class='project-list rounded-t-xl lg:border lg:border-solid lg:border-black' style='overflow:hidden;'>
-        <div class='bg-white dark:bg-zinc-900 md:rounded-t-xl'>
+      <div class='project-list' style='overflow:hidden;'>
+        <div class='md:rounded-t-xl'>
           <Resource
             value={store.endpoint}
             onPending={() => <Loading />}
             onRejected={(reason) => <div>Error {reason}</div> }
             onResolved={([posts, pageCount]) => {
               if (posts)
-                return <>
+                return <div class='rounded-t-xl lg:border border-solid border-black bg-white dark:bg-zinc-900 border-t'>
                   <a download='my-blog.xml' href='/blog/rss.xml' class='hover:underline p-2 block'><Emoji emoji='📰' /> rss</a>
                   <UnifiedContentList {...{ tagData, content: posts as IBlogPost[], startIndex: 0 }} />
                   {pageCount as number > 1?<>
                     <Link href='./page/1' class='p-5 inline-block hover:underline'>Next Page &raquo;</Link>
                   </>:<>
                   </>}
-                </>
+                </div>
               else
                 return <Loading />
             }}

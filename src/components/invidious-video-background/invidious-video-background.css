@@ -3,33 +3,30 @@ a, video {
   position: fixed;
   opacity: 0;
   transition: opacity 1s ease;
+  font-size: 0;
 }
 
 video[data-active="true"] + a {
-  opacity: 1;
-  bottom: 0px;
-  right: 0px;
-  border-radius: 5px 0 0 0;
-  border-top: 1px solid black;
-  border-left: 1px solid black;
+  top: 0px;
+  left: 0px;
+  right: auto;
+  bottom: auto;
+  border-radius: 0 0 5px 0;
+  position: fixed;
+  border-top: 0;
+  border-left: 0;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  font-size: 1em;
 }
 
 video[data-active="true"] + a span.link { 
   display: none;
 }
 
-@media (max-width: 1530px) {
+@media (max-width: 1500px) {
   video[data-active="true"] + a {
-    top: 0px;
-    left: 0px;
-    right: auto;
-    bottom: auto;
-    border-radius: 0 0 5px 0;
     position: absolute;
-    border-top: 0;
-    border-left: 0;
-    border-right: 1px solid black;
-    border-bottom: 1px solid black;
   }
 }
 
@@ -61,9 +58,11 @@ video {
   max-width: initial;
 }
 
-video[data-active="true"] {
+video[data-active="true"], video[data-active="true"] + a {
   opacity: 1;
 }
+
+
 
 @media (max-width: 768px) {
   video {

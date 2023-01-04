@@ -31,7 +31,7 @@ export default component$(() => {
   return (
     <>      
       <div class='md:flex' style='justify-content: center; position: relative'>
-        <div class='bg-white dark:bg-zinc-900 rounded-t-xl md:rounded-xl md:mb-3 p-5 mr-3 md:w-1/2 w-full md:border md:border-solid md:border-black'>
+        <div class='bg-white dark:bg-zinc-900 rounded-t-xl md:rounded-xl md:mb-3 p-5 mr-3 md:w-1/2 w-full border-t md:border border-solid border-black'>
           <div>
             <Image src={portrait} alt='a picture of me' class='sm:float-left w-1/4 mr-auto ml-auto mt-1 mb-4 sm:mb-0 sm:mr-4 sm:w-20 md:w-32 sm:mt-0'  />
             <div>
