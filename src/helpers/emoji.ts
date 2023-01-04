@@ -1,15 +1,10 @@
 
-import openmojiMap from 'openmoji/data/openmoji.json'
 // @ts-ignore
 import emojiUnicode from 'emoji-unicode'
 
-export function emojiToOpenMoji (givenEmoji : string) : string {
-  const unicode = emojiUnicode(givenEmoji).toUpperCase().replaceAll(' ', '-')
-  let openmoji = openmojiMap.filter(({emoji,hexcode}) => { return emoji === givenEmoji || hexcode === unicode })
-  if (openmoji.length === 0) {
-    openmoji = openmojiMap.filter(({emoji}) => { return emoji.startsWith(givenEmoji) }).reverse()
-  }
-  return `http://192.168.1.208:8080/color/svg/${openmoji[0].hexcode}.svg`
+export function emojiToOtherMoji (givenEmoji : string) : string {
+  const unicode = emojiUnicode(givenEmoji).toLowerCase().replaceAll(' ', '-')
+  return `https://twemoji.maxcdn.com/v/14.0.2/72x72/${unicode}.png`
 }
 
 export function convertEmojiToImages(html : string) : string {
@@ -26,7 +21,7 @@ export function convertEmojiToImages(html : string) : string {
   const emojiFound = Array.from(new Set(listOfEmojiFound))
   for (let i = 0; i < emojiFound.length; i++) {
     const emoji = emojiFound[i]
-    html = html.replaceAll(emoji, `<span class='inline-block emoji'><img src="${emojiToOpenMoji(emoji)}" alt="${emoji}" /></span>`)
+    html = html.replace(new RegExp(`([^"]*)${emoji}`, 'g'), `$1<span class='inline-block emoji'><img src="${emojiToOtherMoji(emoji)}" alt="${emoji}" /></span>`)
   }
   return html
 }

@@ -6,7 +6,7 @@ import favicon from '../../images/favicon.ico'
 import Loading from '~/components/loading/loading'
 import { getAllBlogPostsSorted } from '~/dataservice/blog-posts'
 import UnifiedContentList from '~/components/unified-content-list/unified-content-list'
-import { convertEmojiToImages } from '~/helpers/emoji'
+import Emoji from '~/components/emoji/emoji'
 /* import demon1 from '../images/drink-coffee-hail-satan.png' */
 
 export const PAGE_SIZE = 5
@@ -27,7 +27,7 @@ export default component$(() => {
             onResolved={([posts, pageCount]) => {
               if (posts)
                 return <>
-                  <a download='my-blog.xml' href='/blog/rss.xml' class='hover:underline p-2 block'><i class='oma-2x oma oma-web-syndication'></i> rss</a>
+                  <a download='my-blog.xml' href='/blog/rss.xml' class='hover:underline p-2 block'><Emoji emoji='📰' /> rss</a>
                   <UnifiedContentList {...{ tagData, content: posts as IBlogPost[], startIndex: 0 }} />
                   {pageCount as number > 1?<>
                     <Link href='./page/1' class='p-5 inline-block hover:underline'>Next Page &raquo;</Link>

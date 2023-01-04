@@ -3,7 +3,6 @@ import fs from 'fs'
 import child_process from 'child_process'
 import { DOMParser, XMLSerializer } from '@xmldom/xmldom'
 import hljs from 'highlight.js'
-import { convertEmojiToImages } from '~/helpers/emoji'
 const SITE_URL = 'https://marmadilemanteater.pythonanywhere.com'
 
 

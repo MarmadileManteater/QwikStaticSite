@@ -1,5 +1,6 @@
 import { component$, Slot, useClientEffect$, useStylesScoped$, useStore, useTask$, $ } from '@builder.io/qwik'
 import { isBrowser } from '@builder.io/qwik/build'
+import Emoji from '../emoji/emoji'
 import scoped from './invidious-video-background.css?inline'
 
 interface IProps {
@@ -83,7 +84,7 @@ export default component$(({videoId, server = 'https://invidious.namazso.eu', it
       <video ref={$((video : Element) => { store.video = video as HTMLVideoElement })} loop muted src={store.videoUrl} >
         <Slot/>
       </video>
-      <a target='_blank' href={store.invidiousUrl} class='hover:underline text-blue text-blue-600 dark:text-red-300 dark:bg-zinc-900 bg-white p-3' >Watch this video on <span class='icon link' ><i class='oma-2x oma oma-link'></i></span><span class='icon'><i class='oma-2x oma oma-youtube'></i></span>Invidious</a>
+      <a target='_blank' href={store.invidiousUrl} class='hover:underline text-blue text-blue-600 dark:text-red-300 dark:bg-zinc-900 bg-white p-3' >Watch this video on <span class='icon link' ><Emoji emoji='🔗' /></span><span class='icon'><Emoji emoji='📺' /></span>Invidious</a>
     </>
   )
 })
