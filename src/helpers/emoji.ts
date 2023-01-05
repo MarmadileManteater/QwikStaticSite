@@ -8,7 +8,9 @@ export function emojiToOtherMoji (givenEmoji : string) : string {
   switch (unicode) {
   // special cases:
   case '1f937-200d-2640':// what this actually means is:
-    unicode = '1f937-200d-2640-fe0f'
+  case '1f926-200d-2640':
+  case '1f470-200d-2640':
+    unicode = `${unicode}-fe0f`
     break
   default:
     break
@@ -23,12 +25,12 @@ export function emojiToOtherMoji (givenEmoji : string) : string {
     return `https://cdn.bears.town/mutant-std/emoji-build/${mtntIcons[0].short}.svg`
   else {
     const backupIcons = backupMap.filter((backupItem) => {
-      return backupItem.emoji === givenEmoji || backupItem.unicode == unicode
+      return backupItem.emoji === givenEmoji || (backupItem as any).unicode == unicode
     })
     if (backupIcons.length > 0)
       return `https://cdn.bears.town/mutant-std/emoji-build/${backupIcons[0].short}.svg`
     else
-      return `https://twemoji.maxcdn.com/v/14.0.2/72x72/${unicode}.png`
+      return `https://twemoji.maxcdn.com/v/14.0.2/svg/${unicode}.svg`
   }
 }
 
@@ -43,13 +45,28 @@ export function convertEmojiToImages(html : string) : string {
       unicode,
       emoji: match.at(0)
     }
-  }).filter(({unicode}) => (unicode as string).length > 2).map(({emoji}) => emoji)
+  }).filter(({unicode}) => (unicode as string).length > 2).map(({emoji, unicode}) => {
+    return { emoji, unicode }
+  })
   // Convert the list to a set because sets can't have duplicate entries
-  const emojiFound = Array.from(new Set(listOfEmojiFound))
+  const emojiFound = Array.from(new Set(listOfEmojiFound)).sort((a, b) => (b.emoji as string).length - (a.emoji as string).length)
+  console.log(emojiFound)
   for (let i = 0; i < emojiFound.length; i++) {
-    const emoji = emojiFound[i]
+    const { emoji } = emojiFound[i]
+    const unicode = emojiUnicode(emoji).toLowerCase().replaceAll(' ', '-')
     //console.log(`<span class='inline-block emoji'><img src="${emojiToOtherMoji(emoji)}" alt="${emoji}" /></span>`)
-    html = html.replace(new RegExp(`([^"]*)${emoji}`, 'g'), `$1<span class='inline-block emoji'><img src="${emojiToOtherMoji(emoji as string)}" alt="${emoji}" /></span>`)
+    const otherMoji = emojiToOtherMoji(emoji as string)
+    let filter = ''
+    if (otherMoji.search('twemoji') !== -1) {
+      filter = 'filter: grayscale(100%) contrast(0%) brightness(0) drop-shadow(1px 0px 0px black) drop-shadow(0px 1px 0px black) drop-shadow(0.9px 0.9px 0px black) drop-shadow(-0.9px -0.9px 0px black); position: absolute; transform: scale(1); z-index: 0; display: none;'
+    }
+    html = html.replace(new RegExp(`${emoji}`, 'g'), `<span class='inline-block emoji relative'><img src="${otherMoji}" alt="${unicode}" style="z-index:1; margin-right: 0.1em; ${filter?'transform: scale(0.95)':''};" width="20" height="20" />${filter?`<img src="${otherMoji}" class="filter" style="${filter}" />`:''}</span>`)
+  }
+  const sortedByUnicode = emojiFound.sort((a,b) => (b.unicode as string).length - (a.unicode as string).length)
+  for (let i = 0; i < sortedByUnicode.length; i++) {
+    const { emoji } = emojiFound[i]
+    const unicode = emojiUnicode(emoji).toLowerCase().replaceAll(' ', '-')
+    html = html.replaceAll(`alt="${unicode}"`, `alt="${emoji}"`)
   }
   return html
 }
