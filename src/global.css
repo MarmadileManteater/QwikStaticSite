@@ -78,6 +78,13 @@ html, body {
   height: 100%;
 }
 
+img + img.filter {
+  /* hide filters in screen readers 
+  (stylesheets are not processed in reader view, so the inline style is none) */
+  display: block !important;
+}
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
