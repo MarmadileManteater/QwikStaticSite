@@ -79,7 +79,7 @@ html, body {
 }
 
 img + img.filter {
-  /* hide filters in screen readers 
+  /* hide filters in reader view
   (stylesheets are not processed in reader view, so the inline style is none) */
   display: block !important;
 }
