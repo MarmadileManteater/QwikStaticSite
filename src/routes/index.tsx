@@ -11,7 +11,6 @@ import demon2 from '../images/sign-2.png'
 import { IProject } from '~/models/project'
 import Emoji from '~/components/emoji/emoji'
 export default component$(() => {
-
   const getProjects = () => {
     const topFeatured = projectsData[0]
     const sortedData = projectsData.map(p => p).sort((a, b) => { return new Date(b.lastUpdate).getTime() - new Date(a.lastUpdate).getTime() })

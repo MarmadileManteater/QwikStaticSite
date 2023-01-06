@@ -26,10 +26,10 @@ export default component$(({ projects, tagData } : IProps) => {
   })
 
   return (
-    <div class='project-list' >
+    <div class='project-list'>
       <a class={`${state.sortType === 'featured'?'decoration-solid underline cursor-default':'cursor-pointer'} select-none p-4 inline-block`} onClick$={() => { state.sortType = 'featured' }}>Sort by featured</a>
       <a class={`${state.sortType === 'lastUpdate'?'decoration-solid underline cursor-default':'cursor-pointer'} select-none p-4 inline-block`} onClick$={() => { state.sortType = 'lastUpdate' }}>Sort by last updated</a>
-      <UnifiedContentList {...{ content: state.projectsSorted, tagData, startIndex: 0 }} />
+      <UnifiedContentList {...{ content: state.projectsSorted, tagData: tagData, startIndex: 0 }} />
     </div>
   )
 })

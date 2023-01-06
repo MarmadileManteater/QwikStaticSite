@@ -26,7 +26,7 @@ export default component$(({ title, titleLink, summary, thumbnail, tags, tagData
         </div> 
       </>:<></>}
       <div class='p-4 pl-4'>
-        <TagList {...{ tags, tagData }} />
+        <TagList {...{ tags: tags, tagData: tagData }} />
         
         <Link href={titleLink} class='hover:underline'><h2 class={`font-bold text-2xl mb-4 ${title.search(' ') === -1?'break-all':'break-words'}`} dangerouslySetInnerHTML={convertEmojiToImages(title)}></h2></Link>
         <p class='mb-3' dangerouslySetInnerHTML={convertEmojiToImages(summary as string)}></p>

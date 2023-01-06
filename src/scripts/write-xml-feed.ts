@@ -1,5 +1,9 @@
 
 import { getAllBlogPostsSorted, getBlogRSSFeed } from '../dataservice/blog-posts'
-import { writeFileSync }  from 'fs'
+import { writeFileSync, mkdirSync }  from 'fs'
 
-writeFileSync('./rss.xml', getBlogRSSFeed(getAllBlogPostsSorted()))
+try {
+  mkdirSync('./public/blog')
+} catch (_) { (() => {})() }
+
+writeFileSync('./public/blog/rss.xml', getBlogRSSFeed(getAllBlogPostsSorted()))
