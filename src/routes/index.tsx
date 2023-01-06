@@ -35,8 +35,8 @@ export default component$(() => {
           <div>
             <Image src={portrait} alt='a picture of me' class='sm:float-left w-1/4 mr-auto ml-auto mt-1 mb-4 sm:mb-0 sm:mr-4 sm:w-20 md:w-32 sm:mt-0'  />
             <div>
-              <p class='text-xl md:text-base'>Hello! I'm MarmadileManteater. My real name is Emma, and you can look it up. That's an actual picture of me!</p>
-              <p class='text-xl md:text-base md:mt-2 mt-3'><a href='https://matrix.to/#/@marmadilemanteater:matrix.org' class='inline-block hover:underline text-blue-600 dark:text-red-300 pr-3' target='_blank'><Emoji emoji='💬' /> Message me</a> |<a href='mailto:marmadilemanteater@proton.me' class='inline-block hover:underline text-blue-600 dark:text-red-300 pl-3'><Emoji emoji='📬' /> Email me</a></p>
+              <p class='text-xl md:text-base lg:mb-4'>Hello! I'm MarmadileManteater. My real name is Emma, and you can look it up. That's an actual picture of me!</p>
+              <p class='text-xl md:text-base md:mt-2 mt-3'><a href='https://matrix.to/#/@marmadilemanteater:matrix.org' class='inline-block hover:underline text-blue-600 dark:text-red-300 pr-3 text-lg' target='_blank'><Emoji emoji='💬' /> Message me</a> <span class='sm:visible sm:inline md:invisible md:block md:h-1 lg:visible lg:inline'>|</span> <a href='mailto:marmadilemanteater@proton.me' class='inline-block hover:underline text-blue-600 dark:text-red-300 pl-3 md:pl-0 lg:pl-3 text-lg'><Emoji emoji='📬' /> Email me</a></p>
             </div>
           </div>
         </div>
