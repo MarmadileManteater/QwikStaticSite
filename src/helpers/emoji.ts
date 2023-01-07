@@ -1,9 +1,19 @@
 
 // @ts-ignore
 import emojiUnicode from 'emoji-unicode'
-import mtntMap from '../../data/maps/mtnt_2022.12_data.json'
-import backupMap from '../../data/maps/backup_mtnt.json'
-export function emojiToOtherMoji (givenEmoji : string) : string {
+
+export interface EmojiDirectory {
+  mutantstd: string[],
+  twemoji: string[]
+}
+
+export function getEmojiDirectory() : EmojiDirectory {
+  // @ts-ignore emojiDirectory is defined globally in the vite.config.ts
+  return emojiDirectory as EmojiDirectory
+}
+
+export function emojiToOtherMoji(givenEmoji : string) : string|undefined {
+  const { mutantstd, twemoji } = getEmojiDirectory()
   let unicode = emojiUnicode(givenEmoji).toLowerCase().replaceAll(' ', '-')
   switch (unicode) {
   // special cases:
@@ -15,23 +25,13 @@ export function emojiToOtherMoji (givenEmoji : string) : string {
   default:
     break
   }
-  const mtntIcons = mtntMap.filter((mtntIcon) => {
-    if (Array.isArray(mtntIcon.code)) {
-      return unicode === mtntIcon.code.map((code : number) => code.toString(16)).join('-').toLowerCase()
-    }
-  })
-
-  if (mtntIcons.length > 0)
+  if (mutantstd.indexOf(`${unicode}.svg`) !== -1) {
     return `/emoji/mutantstd/${unicode}.svg`
-  else {
-    const backupIcons = backupMap.filter((backupItem) => {
-      return backupItem.emoji === givenEmoji || (backupItem as any).unicode == unicode
-    })
-    if (backupIcons.length > 0)
-      return `/emoji/mutantstd/${unicode}.svg`
-    else
-      return `/emoji/twemoji/${unicode}.svg`
   }
+  if (twemoji.indexOf(`${unicode}.svg`) !== -1) {
+    return `/emoji/twemoji/${unicode}.svg`
+  }
+  return
 }
 
 export function convertEmojiToImages(html : string) : string {
@@ -58,10 +58,11 @@ export function convertEmojiToImages(html : string) : string {
     const { emoji, unicode } = emojiFound[i]
     const otherMoji = emojiToOtherMoji(emoji)
     let filter = ''
-    if (otherMoji.search('twemoji') !== -1) {
+    if (otherMoji?.search('twemoji') !== -1) {
       filter = 'filter: grayscale(100%) contrast(0%) brightness(0) drop-shadow(1px 0px 0px black) drop-shadow(0px 1px 0px black) drop-shadow(0.9px 0.9px 0px black) drop-shadow(-0.9px -0.9px 0px black); position: absolute; transform: scale(1); z-index: 0; display: none;'
     }
-    html = html.replace(new RegExp(`${emoji}`, 'g'), `<span class='inline-block emoji relative'><img src="${otherMoji}" alt="${unicode}" style="z-index:1; margin-right: 0.1em; ${filter?'transform: scale(0.95)':''};" width="20" height="20" />${filter?`<img src="${otherMoji}" class="filter" style="${filter}" />`:''}</span>`)
+    if (otherMoji)
+      html = html.replace(new RegExp(`${emoji}`, 'g'), `<span class='inline-block emoji relative'><img src="${otherMoji}" alt="${unicode}" style="z-index:1; margin-right: 0.1em; ${filter?'transform: scale(0.95)':''};" width="20" height="20" />${filter?`<img src="${otherMoji}" class="filter" style="${filter}" />`:''}</span>`)
   }
   const sortedByUnicode = emojiFound.sort((a,b) => (b.unicode as string).length - (a.unicode as string).length)
   for (let i = 0; i < sortedByUnicode.length; i++) {

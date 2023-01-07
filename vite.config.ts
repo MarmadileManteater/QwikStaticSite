@@ -1,8 +1,8 @@
-import { defineConfig } from 'vite';
-import { qwikVite } from '@builder.io/qwik/optimizer';
-import { qwikCity } from '@builder.io/qwik-city/vite';
-import tsconfigPaths from 'vite-tsconfig-paths';
-
+import { defineConfig } from 'vite'
+import { qwikVite } from '@builder.io/qwik/optimizer'
+import { qwikCity } from '@builder.io/qwik-city/vite'
+import tsconfigPaths from 'vite-tsconfig-paths'
+import { readdirSync } from 'fs'
 export default defineConfig(() => {
   return {
     plugins: [qwikCity(), qwikVite(), tsconfigPaths()],
@@ -11,5 +11,11 @@ export default defineConfig(() => {
         'Cache-Control': 'public, max-age=600',
       },
     },
+    define: {
+      emojiDirectory: {
+        mutantstd: readdirSync('public/emoji/mutantstd'),
+        twemoji: readdirSync('public/emoji/twemoji')
+      }
+    }
   };
 });

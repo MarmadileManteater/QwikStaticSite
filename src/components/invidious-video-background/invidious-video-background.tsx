@@ -1,4 +1,4 @@
-import { component$, Slot, useClientEffect$, useStylesScoped$, useStore, useTask$, $, useOnDocument } from '@builder.io/qwik'
+import { component$, Slot, useClientEffect$, useStylesScoped$, useStore, useTask$, $} from '@builder.io/qwik'
 import { isBrowser } from '@builder.io/qwik/build'
 import Emoji from '../emoji/emoji'
 import scoped from './invidious-video-background.css?inline'

@@ -1,6 +1,6 @@
 import { component$ } from '@builder.io/qwik'
 import { isServer } from '@builder.io/qwik/build'
-import {  DocumentHead, loader$, StaticGenerateHandler } from '@builder.io/qwik-city'
+import { DocumentHead, loader$, StaticGenerateHandler } from '@builder.io/qwik-city'
 import TagList from '../../../components/tag-list/tag-list'
 import favicon from '../../../images/favicon.ico'
 import tagData from '../../../../data/tags.json'
