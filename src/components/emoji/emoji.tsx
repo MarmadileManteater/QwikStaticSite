@@ -1,6 +1,6 @@
 
 import { component$ } from '@builder.io/qwik'
-import { convertEmojiToImages } from '~/helpers/emoji'
+import { convertEmojiToImages } from '@marmadilemanteater/gh-static-site-lib/src/helpers/emoji'
 
 interface IProps {
   emoji: string

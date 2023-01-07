@@ -4,19 +4,18 @@ import { DocumentHead, loader$, StaticGenerateHandler } from '@builder.io/qwik-c
 import TagList from '../../../components/tag-list/tag-list'
 import favicon from '../../../images/favicon.ico'
 import tagData from '../../../../data/tags.json'
-import { getAllBlogPostIds, getBlogPostById } from '~/dataservice/blog-posts'
-import { convertEmojiToImages } from '~/helpers/emoji'
-
+import { getAllBlogPostIds, getBlogPostById } from '@marmadilemanteater/gh-static-site-lib/src/dataservice/blog-posts'
+import { convertEmojiToImages } from '@marmadilemanteater/gh-static-site-lib/src/helpers/emoji'
 export default component$(() => {
   const post = loader.use().value
   return (
     <>
       <div class='bg-white border-t dark:bg-zinc-900 rounded-t-xl lg:border border-solid border-black'>
         <div class='p-6 pb-2'>
-          <h2 class='text-4xl pb-2' dangerouslySetInnerHTML={convertEmojiToImages(post.title as string)}></h2>
+          <h2 class='text-4xl pb-2' dangerouslySetInnerHTML={convertEmojiToImages(post.title)}></h2>
           <TagList {...{tags: post.tags, tagData }} />
           <p class='pb-2 text-zinc-500 dark:text-zinc-400'><em>Last updated {new Date(post.gittime).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZone: 'GMT' })} GMT</em></p>
-          <div dangerouslySetInnerHTML={convertEmojiToImages(post.html as string)}></div>
+          <div dangerouslySetInnerHTML={convertEmojiToImages(post.html)}></div>
         </div>
       </div>
     </>

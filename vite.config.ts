@@ -13,8 +13,8 @@ export default defineConfig(() => {
     },
     define: {
       emojiDirectory: {
-        mutantstd: readdirSync('public/emoji/mutantstd'),
-        twemoji: readdirSync('public/emoji/twemoji')
+        mutantstd: Array.from(readdirSync('public/emoji/mutantstd')),
+        twemoji: Array.from(readdirSync('public/emoji/twemoji'))
       }
     }
   };

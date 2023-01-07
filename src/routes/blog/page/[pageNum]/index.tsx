@@ -1,9 +1,9 @@
 import { component$ } from '@builder.io/qwik'
 import { DocumentHead, loader$, Link, useLocation, StaticGenerateHandler } from '@builder.io/qwik-city'
-import { IBlogPost } from '~/models/blog'
+import { IBlogPost } from '@marmadilemanteater/gh-static-site-lib/src/models/blog'
 import tagData from '../../../../../data/tags.json'
 import favicon from '../../../../images/favicon.ico'
-import { getAllBlogPostIds, getAllBlogPostsSorted } from '~/dataservice/blog-posts'
+import { getAllBlogPostIds, getAllBlogPostsSorted } from '@marmadilemanteater/gh-static-site-lib/src//dataservice/blog-posts'
 import UnifiedContentList from '~/components/unified-content-list/unified-content-list'
 import { PAGE_SIZE } from '../..'
 /* import demon1 from '../images/drink-coffee-hail-satan.png' */

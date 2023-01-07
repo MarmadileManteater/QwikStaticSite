@@ -1,6 +1,6 @@
 import { component$ } from '@builder.io/qwik'
-import { IBlogPost } from '~/models/blog'
-import { IProject, IProjectButtonData, ITag } from '~/models/project'
+import { IBlogPost } from '@marmadilemanteater/gh-static-site-lib/src/models/blog'
+import { IProject, IProjectButtonData, ITag } from '@marmadilemanteater/gh-static-site-lib/src/models/project'
 import ContentCard from '../content-card/content-card'
 import ProjectButton from '../project-button/project-button'
 

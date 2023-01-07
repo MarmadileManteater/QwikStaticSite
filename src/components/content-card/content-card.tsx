@@ -1,10 +1,10 @@
 import { component$, Slot, useStylesScoped$ } from '@builder.io/qwik'
 import { Link } from '@builder.io/qwik-city'
-import { ITag } from '../../models/project'
+import { ITag } from '@marmadilemanteater/gh-static-site-lib/src/models/project'
 import styles from './content-card.css?inline'
 import Image from '../image/image'
 import TagList from '../tag-list/tag-list'
-import { convertEmojiToImages } from '~/helpers/emoji'
+import { convertEmojiToImages } from '@marmadilemanteater/gh-static-site-lib/src/helpers/emoji'
 
 interface IProps {
     title: string

@@ -43,5 +43,8 @@
     "undici": "^5.14.0",
     "vite": "3.2.1",
     "vite-tsconfig-paths": "3.5.0"
+  },
+  "dependencies": {
+    "@marmadilemanteater/gh-static-site-lib": "https://github.com/MarmadileManteater/gh-static-site-lib.git"
   }
 }
