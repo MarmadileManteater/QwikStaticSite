@@ -15,8 +15,6 @@ export function emojiToOtherMoji (givenEmoji : string) : string {
   default:
     break
   }
-  console.log(unicode)
-  console.log(givenEmoji)
   const mtntIcons = mtntMap.filter((mtntIcon) => {
     if (Array.isArray(mtntIcon.code)) {
       return unicode === mtntIcon.code.map((code : number) => code.toString(16)).join('-').toLowerCase()
@@ -56,10 +54,8 @@ export function convertEmojiToImages(html : string) : string {
   })
   // Convert the list to a set because sets can't have duplicate entries
   const emojiFound = Array.from(new Set(listOfEmojiFound)).sort((a, b) => b.emoji.length - a.emoji.length)
-  console.log(emojiFound)
   for (let i = 0; i < emojiFound.length; i++) {
     const { emoji, unicode } = emojiFound[i]
-    //console.log(`<span class='inline-block emoji'><img src="${emojiToOtherMoji(emoji)}" alt="${emoji}" /></span>`)
     const otherMoji = emojiToOtherMoji(emoji)
     let filter = ''
     if (otherMoji.search('twemoji') !== -1) {
