@@ -22,15 +22,15 @@ export function emojiToOtherMoji (givenEmoji : string) : string {
   })
 
   if (mtntIcons.length > 0)
-    return `https://cdn.bears.town/mutant-std/emoji-build/${mtntIcons[0].short}.svg`
+    return `/emoji/mutantstd/${unicode}.svg`
   else {
     const backupIcons = backupMap.filter((backupItem) => {
       return backupItem.emoji === givenEmoji || (backupItem as any).unicode == unicode
     })
     if (backupIcons.length > 0)
-      return `https://cdn.bears.town/mutant-std/emoji-build/${backupIcons[0].short}.svg`
+      return `/emoji/mutantstd/${unicode}.svg`
     else
-      return `https://twemoji.maxcdn.com/v/14.0.2/svg/${unicode}.svg`
+      return `/emoji/twemoji/${unicode}.svg`
   }
 }
 
