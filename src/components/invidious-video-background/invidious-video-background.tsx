@@ -1,4 +1,4 @@
-import { component$, Slot, useClientEffect$, useStylesScoped$, useStore, useTask$, $ } from '@builder.io/qwik'
+import { component$, Slot, useClientEffect$, useStylesScoped$, useStore, useTask$, $, useOnDocument } from '@builder.io/qwik'
 import { isBrowser } from '@builder.io/qwik/build'
 import Emoji from '../emoji/emoji'
 import scoped from './invidious-video-background.css?inline'
@@ -33,6 +33,11 @@ export default component$(({videoId, server = 'https://invidious.namazso.eu', it
     'https://invidious.namazso.eu',
     'https://yt.artemislena.eu'
   ]
+  // Future note to self,
+  // I am aware of https://qwik.builder.io/docs/cheat/best-practices/
+  // I am purposely not using useOnDocument here
+  // I need to do some ⛏digging because I don't know if 
+  // useOnDocument has a way to unbind events
   useClientEffect$(() => {
     const onFirstInteraction = () => {
       const timeUpdate = () => {
@@ -77,8 +82,8 @@ export default component$(({videoId, server = 'https://invidious.namazso.eu', it
     }
     window.addEventListener('click', onFirstInteraction)
     window.addEventListener('keypress', onFirstInteraction)
+    return cleanUp
   }, { eagerness: 'visible' })
-
   return (
     <>
       <video ref={$((video : Element) => { store.video = video as HTMLVideoElement })} loop muted src={store.videoUrl} >
