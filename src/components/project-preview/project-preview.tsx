@@ -1,6 +1,6 @@
 import { component$ } from '@builder.io/qwik'
 import { Link } from '@builder.io/qwik-city'
-import { IProject, ITag } from '../../models/project'
+import { IProject, ITag } from '@marmadilemanteater/gh-static-site-lib/src/models/project'
 import UnifiedContentList from '../unified-content-list/unified-content-list'
 interface IProps {
     projects: Array<IProject>,
