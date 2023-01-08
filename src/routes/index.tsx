@@ -8,7 +8,7 @@ import portrait from '../images/portrait.png'
 import favicon from '../images/favicon.ico'
 /* import demon1 from '../images/drink-coffee-hail-satan.png' */
 import demon2 from '../images/sign-2.png'
-import { IProject } from '~/models/project'
+import { IProject } from '@marmadilemanteater/gh-static-site-lib/src/models/project'
 import Emoji from '~/components/emoji/emoji'
 export default component$(() => {
   const getProjects = () => {
