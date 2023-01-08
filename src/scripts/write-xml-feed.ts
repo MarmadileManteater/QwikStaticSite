@@ -1,9 +1,9 @@
 
-import { getAllBlogPostsSorted, getBlogRSSFeed } from '../dataservice/blog-posts'
+import { getAllBlogPostsSorted, getBlogRSSFeed } from '@marmadilemanteater/gh-static-site-lib/src/dataservice/blog-posts'
 import { writeFileSync, mkdirSync }  from 'fs'
 
 try {
-  mkdirSync('./public/blog')
+  mkdirSync('./data/public/blog')
 } catch (_) { (() => {})() }
 
-writeFileSync('./public/blog/rss.xml', getBlogRSSFeed(getAllBlogPostsSorted()))
+writeFileSync('./data/public/blog/rss.xml', getBlogRSSFeed(getAllBlogPostsSorted()))
