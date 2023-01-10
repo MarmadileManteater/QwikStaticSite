@@ -1,5 +1,5 @@
 import { component$, useStylesScoped$ } from '@builder.io/qwik'
-import { ITag } from '../../models/project'
+import { ITag } from '@marmadilemanteater/gh-static-site-lib/src/models/project'
 import style from './tag.css?inline'
 
 export default component$(({name, link} : ITag) => {

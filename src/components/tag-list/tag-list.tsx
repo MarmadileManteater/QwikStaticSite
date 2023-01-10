@@ -1,6 +1,6 @@
 
 import { component$ } from '@builder.io/qwik'
-import { ITag } from '../../models/project'
+import { ITag } from '@marmadilemanteater/gh-static-site-lib/src/models/project'
 import Tag from '../tag/tag'
 
 interface IProps {
