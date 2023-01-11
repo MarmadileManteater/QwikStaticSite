@@ -42,14 +42,13 @@ jobs:
       - name: 🧶 Yarn 
         run: yarn
 
-      - name: 🏗️ Build 
-        run: |
-          yarn build
-
       - name: 📰 Output RSS feed
         run: |
           npx ts-node ./src/scripts/write-xml-feed.ts
-          mv ./rss.xml ./dist/blog/
+
+      - name: 🏗️ Build 
+        run: |
+          yarn build
       
       - name: 📦 Publish artifact
         uses: actions/upload-artifact@v3
