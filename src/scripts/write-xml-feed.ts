@@ -1,5 +1,5 @@
 
-import { getAllBlogPostsSorted, getBlogRSSFeed } from '@marmadilemanteater/gh-static-site-lib/src/dataservice/blog-posts'
+import { getAllBlogPostsSorted, getBlogRSSFeed } from '@marmadilemanteater/gh-static-site-lib/dist/dataservice/blog-posts.js'
 import { writeFileSync, mkdirSync }  from 'fs'
 
 try {

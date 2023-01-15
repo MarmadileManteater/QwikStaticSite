@@ -4,7 +4,7 @@ import tags from '~/../data/tags.json'
 import projectsData from '~/../data/projects.json'
 import ProjectList from '../../components/project-list/project-list'
 import favicon from '../../images/favicon.ico'
-import { IProject } from '~/models/project'
+import { IProject } from '@marmadilemanteater/gh-static-site-lib/src/models/project'
 export default component$(() => {
 
   return (
