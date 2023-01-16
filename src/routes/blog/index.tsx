@@ -15,7 +15,7 @@ export default component$(() => {
   const { posts, pageCount } = value
   return (
     <>
-      <div class='project-list' style='overflow:hidden;'>
+      <div class='project-list overflow-hidden' >
         <div class='md:rounded-t-xl'>
           {posts?<>
             <div class='rounded-t-xl lg:border border-solid border-black bg-white dark:bg-zinc-900 border-t'>

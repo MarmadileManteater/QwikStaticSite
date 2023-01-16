@@ -17,8 +17,8 @@ export default component$(() => {
   const nextPage = `../${pageNum + 1}`
   return (
     <>
-      <div style='flex: 1; display: flex; flex-direction: column;'>
-        <div class='project-list rounded-t-xl border-t lg:border border-solid border-black bg-white dark:bg-zinc-900 md:rounded-t-xl flex-1 md:flex-initial' style='overflow:hidden; display: flex; flex-direction: column;'>
+      <div class='flex-1 flex flex-col' >
+        <div class='project-list rounded-t-xl border-t lg:border border-solid border-black bg-white dark:bg-zinc-900 md:rounded-t-xl flex-1 md:flex-initial overflow-hidden flex flex-col' >
           <UnifiedContentList {...{ tagData, content: posts as IBlogPost[], startIndex: (posts as IBlogPost[]).length % 2 === 0?1:0 }} />
           <div>
             <Link href={previousPage} class='p-5 inline-block hover:underline'>Previous Page &raquo;</Link>

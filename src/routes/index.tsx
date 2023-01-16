@@ -29,7 +29,7 @@ export default component$(() => {
 
   return (
     <>      
-      <div class='md:flex' style='justify-content: center; position: relative'>
+      <div class='md:flex justify-center relative' >
         <div class='bg-white dark:bg-zinc-900 rounded-t-xl md:rounded-xl md:mb-3 p-5 mr-3 md:w-1/2 w-full border-t md:border border-solid border-black'>
           <div>
             <Image src={portrait} alt='a picture of me' class='sm:float-left w-1/4 mr-auto ml-auto mt-1 mb-4 sm:mb-0 sm:mr-4 sm:w-20 md:w-32 sm:mt-0'  />
@@ -43,7 +43,7 @@ export default component$(() => {
           <ul>
             <li><a href='https://github.com/MarmadileManteater/' target='_blank' class='md:text-base text-xl pr-4 mr-4 block hover:underline hover:bg-zinc-200 hover:dark:bg-zinc-700 text-blue-600 dark:text-red-300 pb-2 pt-2 md:pt-1 md:pb-1'><Emoji emoji='👩‍💻' /> GitHub</a></li>
             <li><a href='https://marmadilemanteater.itch.io/' target='_blank' class='md:text-base text-xl pr-4 mr-4 block hover:underline hover:bg-zinc-200 hover:dark:bg-zinc-700 text-blue-600 dark:text-red-300 pb-2 pt-2 md:pt-1 md:pb-1'><Emoji emoji='🕹' /> itch.io</a></li>
-            <li><a href='https://opengameart.org/users/marmadilemanteater' target='_blank' class='md:text-base text-xl pr-4 mr-4 block hover:underline hover:bg-zinc-200  hover:dark:bg-zinc-700 text-blue-600 dark:text-red-300 pb-2 pt-2 md:pt-1 md:pb-1' style='white-space:nowrap'><Emoji emoji='🎨' /> OpenGameArt</a></li>
+            <li><a href='https://opengameart.org/users/marmadilemanteater' target='_blank' class='md:text-base text-xl pr-4 mr-4 block hover:underline hover:bg-zinc-200  hover:dark:bg-zinc-700 text-blue-600 dark:text-red-300 pb-2 pt-2 md:pt-1 md:pb-1 whitespace-nowrap' ><Emoji emoji='🎨' /> OpenGameArt</a></li>
             <li><a rel='me' href='https://mastodon.gamedev.place/@emma' target='_blank' class='md:text-base text-xl pr-4 mr-4 block hover:underline hover:bg-zinc-200  hover:dark:bg-zinc-700 text-blue-600 dark:text-red-300 pb-2 pt-2 md:pt-1 md:pb-1'><Emoji emoji='🐘' /> Mastodon</a></li>
             <li><Link href='/blog/' class='md:text-base text-xl pr-4 mr-4 block hover:underline hover:bg-zinc-200  hover:dark:bg-zinc-700 text-blue-600 dark:text-red-300 pb-2 pt-2 md:pt-1 md:pb-1'><Emoji emoji='📝' /> Blog</Link></li>
           </ul>
