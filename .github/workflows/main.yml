@@ -42,6 +42,11 @@ jobs:
       - name: 🧶 Yarn 
         run: yarn
 
+      - name: 👷‍♀️ Build @marmadilemanteater/gh-static-site-lib
+        run: |
+          cd node_modules/@marmadilemanteater/gh-static-site-lib
+          yarn build
+
       - name: 📰 Output RSS feed
         run: |
           npx ts-node ./src/scripts/write-xml-feed.ts
@@ -49,10 +54,15 @@ jobs:
       - name: 🏗️ Build 
         run: |
           yarn build
-      
+        
+      - name: 🤐 Zip up build directory for 🏎faster uploads
+        uses: montudor/action-zip@v1
+        with:
+          args: zip -r dist.zip ./dist
+          
       - name: 📦 Publish artifact
         uses: actions/upload-artifact@v3
         with:
           name: MarmadileManteaterQwik
-          path: dist/
+          path: dist.zip
 
