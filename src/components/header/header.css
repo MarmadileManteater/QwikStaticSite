@@ -15,11 +15,11 @@ header h2 {
 }
 
 .red {
-  --outline-color: #811212;
+  --outline-color: #00247d;
 }
 
 .green {
-  --outline-color: #12812a;
+  --outline-color: #0a3083;
 }
 
 .text-outline {

@@ -1,5 +1,6 @@
-import { component$, Slot, useClientEffect$, useStylesScoped$, useStore, useTask$, $ } from '@builder.io/qwik'
+import { component$, Slot, useClientEffect$, useStylesScoped$, useStore, useTask$, $} from '@builder.io/qwik'
 import { isBrowser } from '@builder.io/qwik/build'
+import Emoji from '../emoji/emoji'
 import scoped from './invidious-video-background.css?inline'
 
 interface IProps {
@@ -32,6 +33,11 @@ export default component$(({videoId, server = 'https://invidious.namazso.eu', it
     'https://invidious.namazso.eu',
     'https://yt.artemislena.eu'
   ]
+  // Future note to self,
+  // I am aware of https://qwik.builder.io/docs/cheat/best-practices/
+  // I am purposely not using useOnDocument here
+  // I need to do some ⛏digging because I don't know if 
+  // useOnDocument has a way to unbind events
   useClientEffect$(() => {
     const onFirstInteraction = () => {
       const timeUpdate = () => {
@@ -76,14 +82,14 @@ export default component$(({videoId, server = 'https://invidious.namazso.eu', it
     }
     window.addEventListener('click', onFirstInteraction)
     window.addEventListener('keypress', onFirstInteraction)
+    return cleanUp
   }, { eagerness: 'visible' })
-
   return (
     <>
       <video ref={$((video : Element) => { store.video = video as HTMLVideoElement })} loop muted src={store.videoUrl} >
         <Slot/>
       </video>
-      <a target='_blank' href={store.invidiousUrl} class='hover:underline text-blue text-blue-600 dark:text-red-300 dark:bg-zinc-900 bg-white p-3' >Watch this video on <span class='icon link' >🔗</span><span class='icon'>📺</span>Invidious</a>
+      <a target='_blank' href={store.invidiousUrl} class='hover:underline text-blue text-blue-600 dark:text-red-300 dark:bg-zinc-900 bg-white p-3' >Watch this video on <span class='icon link' ><Emoji emoji='🔗' /></span><span class='icon'><Emoji emoji='📺' /></span>Invidious</a>
     </>
   )
 })

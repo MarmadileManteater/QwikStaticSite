@@ -1,10 +1,10 @@
 import { component$, useStore, useTask$ } from '@builder.io/qwik'
-import { IProject, ITag } from '../../models/project'
+import { IProject, ITag } from '@marmadilemanteater/gh-static-site-lib/src/models/project'
 import UnifiedContentList from '../unified-content-list/unified-content-list'
 
 interface IProps {
-    projects: Array<IProject>
-    tagData: Array<ITag>
+  projects: Array<IProject>
+  tagData: Array<ITag>
 }
 
 export default component$(({ projects, tagData } : IProps) => {
@@ -29,7 +29,7 @@ export default component$(({ projects, tagData } : IProps) => {
     <div class='project-list'>
       <a class={`${state.sortType === 'featured'?'decoration-solid underline cursor-default':'cursor-pointer'} select-none p-4 inline-block`} onClick$={() => { state.sortType = 'featured' }}>Sort by featured</a>
       <a class={`${state.sortType === 'lastUpdate'?'decoration-solid underline cursor-default':'cursor-pointer'} select-none p-4 inline-block`} onClick$={() => { state.sortType = 'lastUpdate' }}>Sort by last updated</a>
-      <UnifiedContentList {...{ content: state.projectsSorted, tagData, startIndex: 0 }} />
+      <UnifiedContentList {...{ content: state.projectsSorted, tagData: tagData, startIndex: 0 }} />
     </div>
   )
 })

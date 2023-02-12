@@ -58,6 +58,33 @@ pre > div {
   word-wrap: break-word;
 }
 
+.emoji {
+  vertical-align: middle;
+  text-align: center;
+}
+
+.emoji > img {
+  width: 1.5em;
+  height: 1.5em;
+  position: relative;
+  top: -3px;
+}
+
+* {
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+img + img.filter {
+  /* hide filters in reader view
+  (stylesheets are not processed in reader view, so the inline style is none) */
+  display: block !important;
+}
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

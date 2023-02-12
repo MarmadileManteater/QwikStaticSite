@@ -1,39 +1,22 @@
-import { Resource, component$, useStore } from '@builder.io/qwik'
+import { component$ } from '@builder.io/qwik'
 import { isServer } from '@builder.io/qwik/build'
-import { RequestHandler, DocumentHead, useEndpoint, StaticGenerateHandler } from '@builder.io/qwik-city'
-import { IBlogPost } from '../../../models/blog'
-import Loading from '../../../components/loading/loading'
+import { DocumentHead, loader$, StaticGenerateHandler } from '@builder.io/qwik-city'
 import TagList from '../../../components/tag-list/tag-list'
 import favicon from '../../../images/favicon.ico'
 import tagData from '../../../../data/tags.json'
-import { getAllBlogPostIds, getBlogPostById } from '~/dataservice/blog-posts'
-
+import { getAllBlogPostIds, getBlogPostById } from '@marmadilemanteater/gh-static-site-lib/src/dataservice/blog-posts'
+import { convertEmojiToImages } from '@marmadilemanteater/gh-static-site-lib/src/helpers/emoji'
 export default component$(() => {
-  const store = useStore({
-    post: {} as IBlogPost,
-    endpoint: useEndpoint<IBlogPost>()
-  })
+  const post = loader.use().value
   return (
     <>
-      <div class='bg-white dark:bg-zinc-900 md:rounded-t-xl lg:border lg:border-solid lg:border-black' >
-        <Resource
-          value={store.endpoint}
-          onPending={() => <Loading />}
-          onRejected={(reason) => <div>Error {reason}</div> }
-          onResolved={(post) => {
-            if (post) {
-              return <>
-                <div class='p-8'>
-                  <h2 class='text-4xl'>{post.title}</h2>
-                  <TagList {...{tags: post.tags, tagData }} />
-                  <p class='pb-2 text-zinc-500 dark:text-zinc-400'><em>Last updated {new Date(post.gittime).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZone: 'GMT' })} GMT</em></p>
-                  <div dangerouslySetInnerHTML={post.html}></div>
-                </div>
-              </>
-            } else
-              return <Loading />
-          }}
-        />
+      <div class='bg-white border-t dark:bg-zinc-900 rounded-t-xl lg:border border-solid border-black'>
+        <div class='p-6 pb-2'>
+          <h2 class='text-4xl pb-2' dangerouslySetInnerHTML={convertEmojiToImages(post.title)}></h2>
+          <TagList {...{tags: post.tags, tagData }} />
+          <p class='pb-2 text-zinc-500 dark:text-zinc-400'><em>Last updated {new Date(post.gittime).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZone: 'GMT' })} GMT</em></p>
+          <div dangerouslySetInnerHTML={convertEmojiToImages(post.html)}></div>
+        </div>
       </div>
     </>
   )
@@ -78,7 +61,7 @@ export const onStaticGenerate: StaticGenerateHandler = () => {
   }
 }
 
-export const onGet: RequestHandler<IBlogPost> = async ({ params }) => {
+export const loader = loader$(async ({ params }) => {
   const { postId } = params
   return getBlogPostById(postId.replace(/%20/g, ' '))
-}
+})
