@@ -22,7 +22,7 @@ export default component$(({ title, titleLink, summary, thumbnail, tags, tagData
     <div class={`content-card md:pt-0 ${thumbnail?'pt-4':'pt-0'} outer-grid ${index % 2 === 0?'bg-zinc-100':'bg-white'} ${index % 2 === 0?'dark:bg-zinc-800':'dark:bg-zinc-900'} dark:text-white`}>
       {thumbnail?<>
         <div class='p-4 pr-0 image-grid'>
-          <a href={titleLink}><Image src={thumbnail} alt={title} class='inline-block' style='max-height: 153px;' /></a>
+          <a href={titleLink}><Image src={thumbnail} alt={title} class='inline-block' style='max-height: 153px; max-width: 182px' /></a>
         </div> 
       </>:<></>}
       <div class='p-4 pl-4'>
