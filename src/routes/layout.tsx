@@ -26,7 +26,7 @@ export default component$(() => {
           {store.loadGodot?<>
             <GodotSceneBackground sceneUrl='/godot_background/index.html' />
           </>:<>
-            <InvidiousVideoBackground videoId='XvtpXPbbiVA' itag='134' />
+            <InvidiousVideoBackground videoId='1t54WpT-aus' itag='136' />
           </>}
           
           <Header />
