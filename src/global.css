@@ -12,6 +12,21 @@
   --qwik-light-purple: #ac7ff4;
   --qwik-dark-purple: #713fc2;
 }
+[data-semi-transparent="true"] * {
+  /* hacky af, but this variable gets overridden by most builtin tw bg colours */
+  --tw-bg-opacity: 0.85 !important;
+}
+
+[data-semi-transparent="true"] .bg-white .bg-zinc-100 {
+  /* hacky af, but this variable gets overridden by most builtin tw bg colours */
+  --tw-bg-opacity: 0.5 !important;
+}
+@media(prefers-color-scheme: dark) {
+  [data-semi-transparent="true"] * {
+    /* hacky af, but this variable gets overridden by most builtin tw bg colours */
+    --tw-bg-opacity: 0.75 !important;
+  }
+}
 
 body {
   background-image: url(images/stars.png);

@@ -8,7 +8,7 @@ interface IProps {
 }
 export default component$(({ projects, tagData } : IProps) => {
   return (
-    <div class='project-list rounded-t-xl overflow-hidden' >
+    <div class='project-list md:rounded-t-xl overflow-hidden' >
       <UnifiedContentList {...{ content: projects, tagData: tagData }} ></UnifiedContentList>
       <Link href='./projects' class='p-5 inline-block hover:underline'>View more &raquo;</Link>
     </div>
