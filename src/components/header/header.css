@@ -14,27 +14,32 @@ header h2 {
   }
 }
 
-.red {
-  --outline-color: #00247d;
+.colour1 {
+  --outline-colour: #651111;
 }
 
-.green {
-  --outline-color: #0a3083;
+.colour2 {
+  --outline-colour: #0a831a;
 }
+
+.colour3 {
+  --outline-colour: #120a83;
+}
+
 
 .text-outline {
   /*
       style adapted from this answer by Elvin Mammadov
       https://stackoverflow.com/a/47884204
   */
-  text-shadow: 4px 0 0 var(--outline-color),
-              -4px 0 0 var(--outline-color),
-              0 4px 0 var(--outline-color),
-              0 -4px 0 var(--outline-color),
-              2px 2px var(--outline-color),
-              -2px -2px 0 var(--outline-color),
-              2px -2px 0 var(--outline-color),
-              -2px 2px 0 var(--outline-color);
+  text-shadow: 4px 0 0 var(--outline-colour),
+              -4px 0 0 var(--outline-colour),
+              0 4px 0 var(--outline-colour),
+              0 -4px 0 var(--outline-colour),
+              2px 2px var(--outline-colour),
+              -2px -2px 0 var(--outline-colour),
+              2px -2px 0 var(--outline-colour),
+              -2px 2px 0 var(--outline-colour);
 }
 
 header {
