@@ -1,13 +1,13 @@
 import { component$ } from '@builder.io/qwik'
 import { isServer } from '@builder.io/qwik/build'
-import { DocumentHead, loader$, StaticGenerateHandler } from '@builder.io/qwik-city'
+import { DocumentHead, routeLoader$, StaticGenerateHandler } from '@builder.io/qwik-city'
 import TagList from '../../../components/tag-list/tag-list'
 import favicon from '../../../images/favicon.ico'
 import tagData from '../../../../data/tags.json'
 import { getAllBlogPostIds, getBlogPostById } from '@marmadilemanteater/gh-static-site-lib/src/dataservice/blog-posts'
 import { convertEmojiToImages } from '@marmadilemanteater/gh-static-site-lib/src/helpers/emoji'
 export default component$(() => {
-  const post = loader.use().value
+  const post = loader().value
   return (
     <>
       <div class='bg-white border-t dark:bg-zinc-900 rounded-t-xl lg:border border-solid border-black'>
@@ -61,7 +61,7 @@ export const onStaticGenerate: StaticGenerateHandler = () => {
   }
 }
 
-export const loader = loader$(async ({ params }) => {
+export const loader = routeLoader$(async ({ params }) => {
   const { postId } = params
   return getBlogPostById(postId.replace(/%20/g, ' '))
 })

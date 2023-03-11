@@ -1,5 +1,5 @@
 import { component$ } from '@builder.io/qwik'
-import { DocumentHead, Link, loader$ } from '@builder.io/qwik-city'
+import { DocumentHead, Link, routeLoader$ } from '@builder.io/qwik-city'
 import { IBlogPost } from '@marmadilemanteater/gh-static-site-lib/src/models/blog'
 import tagData from '../../../data/tags.json'
 import favicon from '../../images/favicon.ico'
@@ -11,7 +11,7 @@ import Emoji from '~/components/emoji/emoji'
 export const PAGE_SIZE = 5
 
 export default component$(() => {
-  const { value } = loader.use()
+  const { value } = loader()
   const { posts, pageCount } = value
   return (
     <>
@@ -33,7 +33,7 @@ export default component$(() => {
   )
 })
 
-export const loader = loader$(() => {
+export const loader = routeLoader$(() => {
   const allPosts = getAllBlogPostsSorted()
   return {
     posts: allPosts.slice(0, PAGE_SIZE),

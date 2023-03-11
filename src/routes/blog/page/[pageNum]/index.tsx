@@ -1,5 +1,5 @@
 import { component$ } from '@builder.io/qwik'
-import { DocumentHead, loader$, Link, useLocation, StaticGenerateHandler } from '@builder.io/qwik-city'
+import { DocumentHead, Link, useLocation, StaticGenerateHandler, routeLoader$ } from '@builder.io/qwik-city'
 import { IBlogPost } from '@marmadilemanteater/gh-static-site-lib/src/models/blog'
 import tagData from '../../../../../data/tags.json'
 import favicon from '../../../../images/favicon.ico'
@@ -9,7 +9,7 @@ import { PAGE_SIZE } from '../..'
 /* import demon1 from '../images/drink-coffee-hail-satan.png' */
 
 export default component$(() => {
-  const { value } = loader.use()
+  const { value } = loader()
   const { posts, pageCount } = value
   const location = useLocation()
   const pageNum = parseInt(location.params.pageNum)
@@ -51,7 +51,7 @@ export const onStaticGenerate: StaticGenerateHandler = () => {
   }
 }
 
-export const loader = loader$(({params}) => {
+export const loader = routeLoader$(({params}) => {
   const pageNum = parseInt(params.pageNum)
   const allPosts = getAllBlogPostsSorted()
   const posts = allPosts.slice(PAGE_SIZE * pageNum, PAGE_SIZE * (pageNum + 1))

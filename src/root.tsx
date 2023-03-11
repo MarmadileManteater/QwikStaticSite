@@ -2,7 +2,6 @@ import { component$, useStyles$ } from '@builder.io/qwik'
 import { QwikCityProvider, RouterOutlet } from '@builder.io/qwik-city'
 import { RouterHead } from './components/router-head/router-head'
 import globalStyles from './global.css?inline'
-import openmojiAwesome from './openmoji-color-awesome.css?inline'
 export default component$(() => {
   /**
    * The root of a QwikCity site always start with the <QwikCity> component,
@@ -11,7 +10,6 @@ export default component$(() => {
    * Dont remove the `<head>` and `<body>` elements.
    */
   useStyles$(globalStyles)
-  useStyles$(openmojiAwesome)
 
   return (
     <QwikCityProvider>

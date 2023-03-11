@@ -22,22 +22,24 @@ jobs:
           rm data -rf
           git clone https://github.com/MarmadileManteater/gh-pages-site-data.git data
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2.2.4
+      - name: ⬇ Download qwik artifact
+        uses: dawidd6/action-download-artifact@v2
         with:
-          version: 7.14.2
-
-      - name: Setup wasm-pack
-        uses: jetli/wasm-pack-action@v0.4.0
-        with:
-          # Optional version of wasm-pack to install(eg. 'v0.9.1', 'latest')
-          version: 'latest'
-
-      - name: 🏗 Build my ⚡Qwik fork
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          workflow: build.yml 
+          workflow_conclusion: success
+          branch: main
+          path: ./
+          name: QwikFork
+          repo: MarmadileManteater/qwik
+          check_artifacts:  false
+          search_artifacts: false
+          skip_unpack: false
+          if_no_artifact_found: fail
+          
+      - name: 🤐 Unzip qwik artifact 
         run: |
-          cd qwik
-          pnpm install
-          pnpm build.full
+          unzip -o packages.zip -d ./qwik
 
       - name: 🧶 Yarn 
         run: yarn
@@ -54,15 +56,17 @@ jobs:
       - name: 🏗️ Build 
         run: |
           yarn build
-        
-      - name: 🤐 Zip up build directory for 🏎faster uploads
-        uses: montudor/action-zip@v1
-        with:
-          args: zip -r dist.zip ./dist
-          
-      - name: 📦 Publish artifact
+
+      - name: 🤐 Zip up build directories for 🏎faster uploads
+        run: |
+          cd ./build-files/marmadilemanteater.dev
+          zip -r marmadilemanteater.dev.zip .
+          cp ./marmadilemanteater.dev.zip ../../
+
+      - name: 📦 Publish marmadilemanteater.dev artifact
         uses: actions/upload-artifact@v3
         with:
           name: MarmadileManteaterQwik
-          path: dist.zip
+          path: marmadilemanteater.dev.zip
+
 
