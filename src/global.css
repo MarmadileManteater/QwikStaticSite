@@ -30,11 +30,7 @@
 }
 
 @media(max-width: 768px) {
-  [data-semi-transparent="true"] * {
-    /* hacky af, but this variable gets overridden by most builtin tw bg colours */
-    --tw-bg-opacity: 1 !important;
-  }
-  
+  [data-semi-transparent="true"] *,
   [data-semi-transparent="true"] .bg-white .bg-zinc-100 {
     /* hacky af, but this variable gets overridden by most builtin tw bg colours */
     --tw-bg-opacity: 1 !important;
