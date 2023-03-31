@@ -17,16 +17,18 @@
   --tw-bg-opacity: 0.85 !important;
 }
 
-[data-semi-transparent="true"] .bg-white .bg-zinc-100 {
+[data-semi-transparent="true"] .bg-white .bg-zinc-300 {
   /* hacky af, but this variable gets overridden by most builtin tw bg colours */
-  --tw-bg-opacity: 0.5 !important;
+  --tw-bg-opacity: 1 !important;
 }
+
 @media(prefers-color-scheme: dark) {
   [data-semi-transparent="true"] * {
     /* hacky af, but this variable gets overridden by most builtin tw bg colours */
     --tw-bg-opacity: 0.75 !important;
   }
 }
+
 @media(max-width: 768px) {
   [data-semi-transparent="true"] * {
     /* hacky af, but this variable gets overridden by most builtin tw bg colours */
