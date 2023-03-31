@@ -28,7 +28,7 @@ export default component$(() => {
       <div class='flex flex-col min-h-screen' data-semi-transparent='true'>
         <div class='wrapper flex-1 flex flex-col relative' >
           {store.canLoadGodot&&!store.loadGodot?<>
-            <a class='fixed top-2 right-5 z-10 hover:underline cursor-pointer hidden lg:inline' onClick$={loadGodot}>Load <Emoji emoji='🤖' />Godot background scene in browser</a>
+            <a class='text-white fixed top-2 right-5 z-10 hover:underline cursor-pointer hidden lg:inline' onClick$={loadGodot}>Load <Emoji emoji='🤖' />Godot background scene in browser</a>
           </>:<></>}
           {store.loadGodot?<>
             <GodotSceneBackground sceneUrl='/godot_background/index.html' />
