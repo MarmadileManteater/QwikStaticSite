@@ -24,7 +24,7 @@ export default component$(() => {
             <GodotSceneBackground sceneUrl='/godot_background/index.html' />
           </>:<>
             <InvidiousVideoBackground videoId='1t54WpT-aus' itag='136' />
-            <a class='text-white fixed top-2 right-5 z-10 hover:underline cursor-pointer hidden lg:inline' onClick$={loadGodot}>Load <Emoji emoji='🤖' />Godot background scene in browser</a>
+            <a class='text-white absolute top-2 right-5 z-10 hover:underline cursor-pointer hidden lg:inline' onClick$={loadGodot}>Load <Emoji emoji='🤖' />Godot background scene in browser</a>
           </>}
           
           <Header />
