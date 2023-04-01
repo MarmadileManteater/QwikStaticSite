@@ -4,7 +4,7 @@ import tags from '../../data/tags.json'
 import projectsData from '../../data/projects.json'
 import ProjectPreview from '../components/project-preview/project-preview'
 import Image from '../components/image/image'
-import portrait from '../images/portrait.png'
+import portrait from '../images/portrait.jpg'
 import favicon from '../images/favicon.ico'
 /* import demon1 from '../images/drink-coffee-hail-satan.png' */
 import demon2 from '../images/sign-2.png'
