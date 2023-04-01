@@ -35,3 +35,22 @@
   overflow: hidden;
   border-radius: 0;
 }
+
+.rust {
+  background-image: url('https://raw.githubusercontent.com/rust-lang/rust-artwork/bf0b3272f9ba8d22f7fd45e408496d05621b3b5c/logo/rust-logo-blk.svg');
+  background-color: transparent;
+  background-size: 40px;
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  color: transparent;
+  user-select: none;
+  overflow: hidden;
+  border-radius: 0;
+}
+
+@media(prefers-color-scheme: dark) {
+  .rust {
+    filter: invert(100%);
+  }
+}
