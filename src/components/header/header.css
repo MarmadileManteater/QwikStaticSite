@@ -45,3 +45,14 @@ header h2 {
 header {
   max-width: 100%;
 }
+
+@media (max-width: 420px) {
+  .section1 .colour2 {
+    color: #F87171;
+    --outline-colour: #651111;
+  }
+  .section2 .colour2 {
+    color: #60A5FA;
+    --outline-colour: #120a83;
+  }
+}
