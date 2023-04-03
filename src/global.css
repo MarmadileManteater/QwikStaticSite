@@ -12,6 +12,7 @@
   --qwik-light-purple: #ac7ff4;
   --qwik-dark-purple: #713fc2;
 }
+
 [data-semi-transparent="true"] * {
   /* hacky af, but this variable gets overridden by most builtin tw bg colours */
   --tw-bg-opacity: 0.85 !important;
