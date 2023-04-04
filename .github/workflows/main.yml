@@ -1,9 +1,9 @@
-name: 👩‍🔬 Test godot background scene CI
+name: Build
 
 on:
   workflow_dispatch:
   push:
-    branches: [godot-scene-background]
+    branches: [development]
 
 jobs:
   build:
