@@ -55,7 +55,6 @@ video {
   margin-left: -50%;
   min-width: 100%;
   height: 100vh;
-  max-width: initial;
 }
 
 video[data-active="true"], video[data-active="true"] + a {
