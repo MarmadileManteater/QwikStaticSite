@@ -43,7 +43,7 @@ export default component$(({videoId, server = 'https://invidious.sethforprivacy.
       const onFirstInteraction = () => {
         const timeUpdate = () => {
           if (store.video.currentTime > 3) {
-            store.video.setAttribute('data-active', 'true')
+            store.video.parentElement?.setAttribute('data-active', 'true')
             store.video.removeEventListener('timeupdate', timeUpdate)
           }
         }
@@ -92,8 +92,8 @@ export default component$(({videoId, server = 'https://invidious.sethforprivacy.
         <video ref={$((video : Element) => { store.video = video as HTMLVideoElement })} loop muted src={store.videoUrl} >
           <Slot/>
         </video>
-        <a target='_blank' href={store.invidiousUrl} class='z-10 hover:underline text-blue text-blue-600 dark:text-red-300 dark:bg-zinc-900 bg-white p-3' >Watch this video on <span class='icon link' ><Emoji emoji='🔗' /></span><span class='icon'><Emoji emoji='📺' /></span>Invidious</a>
       </div>
+      <a target='_blank' href={store.invidiousUrl} class='fixed top-0 left-0 z-10 hover:underline text-blue text-blue-600 dark:text-red-300 dark:bg-zinc-900 bg-white p-3' >Watch this video on <span class='icon link' ><Emoji emoji='🔗' /></span><span class='icon'><Emoji emoji='📺' /></span>Invidious</a>
     </>
   )
 })

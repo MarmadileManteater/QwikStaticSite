@@ -6,7 +6,7 @@ a, video {
   font-size: 0;
 }
 
-video[data-active="true"] + a {
+div[data-active="true"] + a {
   top: 0px;
   left: 0px;
   right: auto;
@@ -20,18 +20,18 @@ video[data-active="true"] + a {
   font-size: 1em;
 }
 
-video[data-active="true"] + a span.link { 
+div[data-active="true"] + a span.link { 
   display: none;
 }
 
 @media (max-width: 1500px) {
-  video[data-active="true"] + a {
+  div[data-active="true"] + a {
     position: absolute;
   }
 }
 
 @media (max-width: 1368px) {
-  video[data-active="true"] + a {
+  div[data-active="true"] + a {
     top: 0px;
     left: 0px;
     right: auto;
@@ -40,10 +40,10 @@ video[data-active="true"] + a span.link {
     padding: 3px;
     font-size: 0;
   }
-  video[data-active="true"] + a .icon {
+  div[data-active="true"] + a .icon {
     font-size: initial;
   }
-  video[data-active="true"] + a span.link { 
+  div[data-active="true"] + a span.link { 
     display: inline;
   }
 }
@@ -57,7 +57,7 @@ video {
   height: 100vh;
 }
 
-video[data-active="true"], video[data-active="true"] + a {
+div[data-active="true"] video, div[data-active="true"] + a {
   opacity: 1;
 }
 
